@@ -61,7 +61,7 @@ function Seo() {
   return null;
 }
 
-// ---------- Header Component ----------
+// ---------- Header Component - Clean Logo Only ----------
 function Header({ onOpenCal }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -69,30 +69,33 @@ function Header({ onOpenCal }) {
     <header className="nav-iteratum fixed top-0 left-0 right-0 z-40">
       <Section className="py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <img src={ASSETS.iteratumLogo} alt="Iteratum" className="h-8 w-8 rounded-md" />
-            <span className="text-xl font-bold text-iteratum-navy">Iteratum</span>
+          {/* Logo - Clean without redundant text */}
+          <div className="flex items-center">
+            <img 
+              src={ASSETS.iteratumLogo} 
+              alt="Iteratum" 
+              className="h-10 w-auto" 
+            />
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-accent transition-colors">
+            <a href="#services" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors">
               Services
             </a>
-            <a href="#pricing" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-accent transition-colors">
+            <a href="#pricing" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors">
               Pricing
             </a>
-            <a href="#methodology" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-accent transition-colors">
+            <a href="#methodology" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors">
               Process
             </a>
-            <a href="#results" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-accent transition-colors">
+            <a href="#results" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors">
               Results
             </a>
-            <a href="#about" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-accent transition-colors">
+            <a href="#about" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors">
               About
             </a>
-            <a href="#resources" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-accent transition-colors">
+            <a href="#resources" className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors">
               Resources
             </a>
           </nav>
@@ -118,7 +121,7 @@ function Header({ onOpenCal }) {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-iteratum-gray-200">
+          <div className="md:hidden mt-4 pb-4 border-t border-iteratum">
             <nav className="flex flex-col space-y-3 pt-4">
               <a href="#services" className="text-sm font-medium text-iteratum-charcoal">Services</a>
               <a href="#pricing" className="text-sm font-medium text-iteratum-charcoal">Pricing</a>
@@ -289,11 +292,11 @@ function TrustSection() {
   return (
     <Section id="trust" className="py-12 border-t border-iteratum">
       <div className="text-center mb-8">
-        <h3 className="text-lg font-semibold text-iteratum-navy mb-4">Trusted by Growing Teams</h3>
+        <h3 className="text-lg font-semibold text-iteratum-dark mb-4">Trusted by Growing Teams</h3>
         <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-          <div className="px-6 py-3 border rounded-lg text-sm text-iteratum-gray-600">Fortune 500 Companies</div>
-          <div className="px-6 py-3 border rounded-lg text-sm text-iteratum-gray-600">Fast-Growing Startups</div>
-          <div className="px-6 py-3 border rounded-lg text-sm text-iteratum-gray-600">Remote Teams</div>
+          <div className="px-6 py-3 border rounded-lg text-sm text-iteratum-steel">Fortune 500 Companies</div>
+          <div className="px-6 py-3 border rounded-lg text-sm text-iteratum-steel">Fast-Growing Startups</div>
+          <div className="px-6 py-3 border rounded-lg text-sm text-iteratum-steel">Remote Teams</div>
         </div>
       </div>
       
@@ -329,7 +332,7 @@ function AboutSection() {
           <h2 className="mt-4 text-iteratum-heading">
             Built by experts who understand your challenges
           </h2>
-          <div className="mt-6 space-y-4 text-iteratum-gray-600">
+          <div className="mt-6 space-y-4 text-iteratum-slate">
             <p>
               We've been where you are. Struggling with scattered workflows, missed deadlines, 
               and teams that resist new systems. That's exactly why we started Iteratum.
@@ -359,16 +362,16 @@ function AboutSection() {
           <Card className="p-8 bg-iteratum-gradient-subtle">
             <div className="space-y-6">
               <div>
-                <div className="text-3xl font-bold text-iteratum-navy">95%</div>
-                <div className="text-sm text-iteratum-gray-600">Team adoption rate</div>
+                <div className="text-3xl font-bold text-iteratum-cyan">95%</div>
+                <div className="text-sm text-iteratum-steel">Team adoption rate</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-iteratum-navy">10 days</div>
-                <div className="text-sm text-iteratum-gray-600">Average implementation time</div>
+                <div className="text-3xl font-bold text-iteratum-cyan">10 days</div>
+                <div className="text-sm text-iteratum-steel">Average implementation time</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-iteratum-navy">50+</div>
-                <div className="text-sm text-iteratum-gray-600">Successful implementations</div>
+                <div className="text-3xl font-bold text-iteratum-cyan">50+</div>
+                <div className="text-sm text-iteratum-steel">Successful implementations</div>
               </div>
             </div>
           </Card>
@@ -452,12 +455,12 @@ function PricingSection() {
             )}
             
             <div className="text-center mb-6">
-              <h3 className="text-xl font-bold text-iteratum-navy">{pkg.name}</h3>
+              <h3 className="text-xl font-bold text-iteratum-dark">{pkg.name}</h3>
               <div className="mt-2">
-                <span className="text-3xl font-bold text-iteratum-navy">{pkg.price}</span>
-                <div className="text-sm text-iteratum-gray-600">{pkg.duration} delivery</div>
+                <span className="text-3xl font-bold text-iteratum-dark">{pkg.price}</span>
+                <div className="text-sm text-iteratum-steel">{pkg.duration} delivery</div>
               </div>
-              <p className="mt-2 text-sm text-iteratum-gray-600">{pkg.description}</p>
+              <p className="mt-2 text-sm text-iteratum-slate">{pkg.description}</p>
             </div>
 
             <ul className="space-y-3 mb-8">
@@ -481,10 +484,10 @@ function PricingSection() {
       </div>
 
       <div className="mt-12 text-center">
-        <p className="text-sm text-iteratum-gray-600 mb-4">
+        <p className="text-sm text-iteratum-slate mb-4">
           All packages include our 30-day satisfaction guarantee
         </p>
-        <div className="flex flex-wrap justify-center gap-4 text-xs text-iteratum-gray-500">
+        <div className="flex flex-wrap justify-center gap-4 text-xs text-iteratum-steel">
           <span>✓ No setup fees</span>
           <span>✓ Money-back guarantee</span>
           <span>✓ Flexible payment terms</span>
@@ -633,19 +636,19 @@ function MethodologySection() {
             <div className="grid lg:grid-cols-3 gap-8 items-start">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 bg-iteratum-accent text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="w-8 h-8 bg-iteratum-cyan text-white rounded-full flex items-center justify-center text-sm font-bold">
                     {i + 1}
                   </div>
                   <div>
-                    <h3 className="font-bold text-iteratum-navy">{phase.phase}</h3>
-                    <div className="text-sm text-iteratum-gray-600">{phase.duration}</div>
+                    <h3 className="font-bold text-iteratum-dark">{phase.phase}</h3>
+                    <div className="text-sm text-iteratum-steel">{phase.duration}</div>
                   </div>
                 </div>
-                <p className="text-sm text-iteratum-gray-600 mt-2">{phase.description}</p>
+                <p className="text-sm text-iteratum-slate mt-2">{phase.description}</p>
               </div>
               
               <div className="lg:col-span-2">
-                <h4 className="font-semibold text-iteratum-navy mb-3">Key Deliverables:</h4>
+                <h4 className="font-semibold text-iteratum-dark mb-3">Key Deliverables:</h4>
                 <div className="grid sm:grid-cols-2 gap-2">
                   {phase.deliverables.map((deliverable, j) => (
                     <div key={j} className="flex items-center gap-2 text-sm">
@@ -711,12 +714,12 @@ function ResourcesSection() {
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {resources.map((resource, i) => (
           <Card key={i} className="p-6 text-center hover-iteratum-lift">
-            <div className="w-12 h-12 bg-iteratum-gradient-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 bg-iteratum-dark rounded-xl flex items-center justify-center mx-auto mb-4">
               <resource.icon className="w-6 h-6 text-white" />
             </div>
             <div className="pill-iteratum mb-3">{resource.type}</div>
-            <h3 className="font-semibold text-iteratum-navy mb-2">{resource.title}</h3>
-            <p className="text-sm text-iteratum-gray-600 mb-4">{resource.description}</p>
+            <h3 className="font-semibold text-iteratum-dark mb-2">{resource.title}</h3>
+            <p className="text-sm text-iteratum-slate mb-4">{resource.description}</p>
             <Button href={resource.downloadUrl} variant="ghost" className="text-xs">
               Download Free
             </Button>
@@ -767,12 +770,12 @@ function TestimonialsSection() {
                 <div key={star} className="w-4 h-4 text-yellow-400">★</div>
               ))}
             </div>
-            <blockquote className="text-iteratum-gray-700 mb-4">
+            <blockquote className="text-iteratum-slate mb-4">
               "{testimonial.quote}"
             </blockquote>
             <div className="border-t pt-4">
-              <div className="font-semibold text-iteratum-navy">{testimonial.author}</div>
-              <div className="text-sm text-iteratum-gray-600">
+              <div className="font-semibold text-iteratum-dark">{testimonial.author}</div>
+              <div className="text-sm text-iteratum-steel">
                 {testimonial.title}, {testimonial.company}
               </div>
             </div>
@@ -899,7 +902,7 @@ export default function Site() {
           {services.map((s, i) => (
             <Card key={i} className="p-6">
               <div className="flex items-start gap-4">
-                <div className="rounded-xl bg-black text-white p-2 flex-shrink-0">
+                <div className="rounded-xl bg-iteratum-dark text-white p-2 flex-shrink-0">
                   {React.createElement(s.icon, { className: "h-5 w-5" })}
                 </div>
                 <div className="w-full">
