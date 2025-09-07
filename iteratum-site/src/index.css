@@ -2,5 +2,377 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
+/* Iteratum Brand Color Variables */
+:root {
+  /* Primary Brand Colors */
+  --iteratum-navy: #1a2332;
+  --iteratum-charcoal: #2d3748;
+  --iteratum-slate: #4a5568;
+  --iteratum-accent: #3182ce;
+  --iteratum-accent-light: #63b3ed;
+  
+  /* Neutral Palette */
+  --iteratum-gray-50: #f8fafc;
+  --iteratum-gray-100: #f1f5f9;
+  --iteratum-gray-200: #e2e8f0;
+  --iteratum-gray-300: #cbd5e1;
+  --iteratum-gray-400: #94a3b8;
+  --iteratum-gray-500: #64748b;
+  --iteratum-gray-600: #475569;
+  --iteratum-gray-700: #334155;
+  --iteratum-gray-800: #1e293b;
+  --iteratum-gray-900: #0f172a;
+  
+  /* Success & Status Colors */
+  --iteratum-success: #059669;
+  --iteratum-success-light: #10b981;
+  --iteratum-warning: #d97706;
+  --iteratum-error: #dc2626;
+  
+  /* Gradients */
+  --iteratum-gradient-primary: linear-gradient(135deg, var(--iteratum-navy) 0%, var(--iteratum-charcoal) 100%);
+  --iteratum-gradient-accent: linear-gradient(135deg, var(--iteratum-accent) 0%, var(--iteratum-accent-light) 100%);
+  --iteratum-gradient-subtle: linear-gradient(135deg, var(--iteratum-gray-50) 0%, var(--iteratum-gray-100) 100%);
+  
+  /* Shadows */
+  --iteratum-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --iteratum-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --iteratum-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --iteratum-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Typography */
+  --iteratum-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --iteratum-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  
+  color-scheme: light;
+}
 
+/* Base Typography Enhancement */
+@layer base {
+  body {
+    font-family: var(--iteratum-font-primary);
+    color: var(--iteratum-gray-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--iteratum-navy);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  
+  p {
+    color: var(--iteratum-gray-600);
+  }
+  
+  /* Professional link styling */
+  a {
+    color: var(--iteratum-accent);
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--iteratum-accent-light);
+  }
+}
+
+/* Iteratum Component Styles */
+@layer components {
+  /* Professional Button Variants */
+  .btn-iteratum-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200;
+    background: var(--iteratum-gradient-primary);
+    color: white;
+    box-shadow: var(--iteratum-shadow-md);
+  }
+  
+  .btn-iteratum-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--iteratum-shadow-lg);
+  }
+  
+  .btn-iteratum-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200;
+    background: white;
+    color: var(--iteratum-navy);
+    border: 2px solid var(--iteratum-gray-200);
+    box-shadow: var(--iteratum-shadow-sm);
+  }
+  
+  .btn-iteratum-secondary:hover {
+    border-color: var(--iteratum-accent);
+    color: var(--iteratum-accent);
+    transform: translateY(-1px);
+    box-shadow: var(--iteratum-shadow-md);
+  }
+  
+  .btn-iteratum-accent {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200;
+    background: var(--iteratum-gradient-accent);
+    color: white;
+    box-shadow: var(--iteratum-shadow-md);
+  }
+  
+  .btn-iteratum-accent:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--iteratum-shadow-lg);
+  }
+  
+  /* Professional Cards */
+  .card-iteratum {
+    @apply rounded-2xl border transition-all duration-300;
+    background: white;
+    border-color: var(--iteratum-gray-200);
+    box-shadow: var(--iteratum-shadow-sm);
+  }
+  
+  .card-iteratum:hover {
+    border-color: var(--iteratum-gray-300);
+    box-shadow: var(--iteratum-shadow-lg);
+    transform: translateY(-2px);
+  }
+  
+  .card-iteratum-featured {
+    @apply rounded-2xl border-2 transition-all duration-300;
+    background: var(--iteratum-gradient-subtle);
+    border-color: var(--iteratum-accent);
+    box-shadow: var(--iteratum-shadow-md);
+  }
+  
+  /* Professional Pills/Tags */
+  .pill-iteratum {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all duration-200;
+    background: var(--iteratum-gray-100);
+    color: var(--iteratum-gray-700);
+    border: 1px solid var(--iteratum-gray-200);
+  }
+  
+  .pill-iteratum-accent {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all duration-200;
+    background: var(--iteratum-accent);
+    color: white;
+  }
+  
+  /* Professional Form Elements */
+  .input-iteratum {
+    @apply w-full px-4 py-3 rounded-xl border transition-all duration-200;
+    border-color: var(--iteratum-gray-300);
+    background: white;
+    color: var(--iteratum-gray-800);
+  }
+  
+  .input-iteratum:focus {
+    outline: none;
+    border-color: var(--iteratum-accent);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+  }
+  
+  /* Professional Sections */
+  .section-iteratum {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .hero-iteratum {
+    background: var(--iteratum-gradient-subtle);
+    border-bottom: 1px solid var(--iteratum-gray-200);
+  }
+  
+  /* Professional Navigation */
+  .nav-iteratum {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--iteratum-gray-200);
+  }
+  
+  /* Professional Footer */
+  .footer-iteratum {
+    background: var(--iteratum-navy);
+    color: var(--iteratum-gray-200);
+  }
+  
+  /* Status Indicators */
+  .status-success {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--iteratum-success);
+  }
+  
+  .status-warning {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(217, 119, 6, 0.1);
+    color: var(--iteratum-warning);
+  }
+  
+  /* Professional Modal */
+  .modal-iteratum {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+  }
+  
+  .modal-content-iteratum {
+    @apply w-full max-w-3xl rounded-2xl overflow-hidden;
+    background: white;
+    box-shadow: var(--iteratum-shadow-xl);
+  }
+}
+
+/* Iteratum Utility Classes */
+@layer utilities {
+  /* Brand Colors */
+  .text-iteratum-navy { color: var(--iteratum-navy); }
+  .text-iteratum-charcoal { color: var(--iteratum-charcoal); }
+  .text-iteratum-accent { color: var(--iteratum-accent); }
+  .text-iteratum-success { color: var(--iteratum-success); }
+  
+  .bg-iteratum-navy { background-color: var(--iteratum-navy); }
+  .bg-iteratum-charcoal { background-color: var(--iteratum-charcoal); }
+  .bg-iteratum-accent { background-color: var(--iteratum-accent); }
+  .bg-iteratum-gradient { background: var(--iteratum-gradient-primary); }
+  .bg-iteratum-gradient-accent { background: var(--iteratum-gradient-accent); }
+  .bg-iteratum-gradient-subtle { background: var(--iteratum-gradient-subtle); }
+  
+  /* Professional Spacing */
+  .space-iteratum { @apply space-y-8; }
+  .space-iteratum-sm { @apply space-y-4; }
+  .space-iteratum-lg { @apply space-y-12; }
+  
+  /* Professional Borders */
+  .border-iteratum { border-color: var(--iteratum-gray-200); }
+  .border-iteratum-accent { border-color: var(--iteratum-accent); }
+  
+  /* Professional Shadows */
+  .shadow-iteratum-sm { box-shadow: var(--iteratum-shadow-sm); }
+  .shadow-iteratum-md { box-shadow: var(--iteratum-shadow-md); }
+  .shadow-iteratum-lg { box-shadow: var(--iteratum-shadow-lg); }
+  .shadow-iteratum-xl { box-shadow: var(--iteratum-shadow-xl); }
+  
+  /* Professional Animations */
+  .animate-iteratum-fade-in {
+    animation: iteratum-fadeIn 0.6s ease-out;
+  }
+  
+  .animate-iteratum-slide-up {
+    animation: iteratum-slideUp 0.4s ease-out;
+  }
+  
+  .animate-iteratum-scale {
+    animation: iteratum-scale 0.3s ease-out;
+  }
+  
+  /* Hover Effects */
+  .hover-iteratum-lift:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+  }
+  
+  .hover-iteratum-glow:hover {
+    box-shadow: 0 0 20px rgba(49, 130, 206, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+}
+
+/* Professional Animations */
+@keyframes iteratum-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes iteratum-slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes iteratum-scale {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+/* Professional Typography Scale */
+.text-iteratum-hero {
+  @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight;
+  color: var(--iteratum-navy);
+  line-height: 1.1;
+}
+
+.text-iteratum-subtitle {
+  @apply text-lg sm:text-xl;
+  color: var(--iteratum-gray-600);
+  line-height: 1.6;
+}
+
+.text-iteratum-heading {
+  @apply text-2xl sm:text-3xl font-bold;
+  color: var(--iteratum-navy);
+}
+
+.text-iteratum-subheading {
+  @apply text-lg sm:text-xl font-semibold;
+  color: var(--iteratum-charcoal);
+}
+
+/* Professional Responsive Design */
+@media (max-width: 640px) {
+  .section-iteratum {
+    @apply px-4;
+  }
+  
+  .card-iteratum {
+    @apply rounded-xl;
+  }
+  
+  .btn-iteratum-primary,
+  .btn-iteratum-secondary,
+  .btn-iteratum-accent {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --iteratum-gray-50: #0f172a;
+    --iteratum-gray-100: #1e293b;
+    --iteratum-gray-200: #334155;
+  }
+}
+
+/* Professional Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .card-iteratum {
+    border: 1px solid var(--iteratum-gray-300) !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Focus Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--iteratum-accent);
+  outline-offset: 2px;
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--iteratum-accent);
+  color: white;
+}
