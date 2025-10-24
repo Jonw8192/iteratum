@@ -432,24 +432,36 @@ const faqs = [
 ];
 
 const caseStudies = [
-  {
-    industry: "Construction",
-    title: "Standard jobs in Zoho Projects",
-    result: "Twenty two percent faster turnaround",
-    points: ["Templates and SLAs", "Role dashboards", "Automated handoffs"],
+   {
+    industry: "Professional Services",
+    title: "Improved team visibility and workload clarity",
+    result: "Decreased project delays across departments",
+    points: [
+      "Unified task intake",
+      "Role-owned views and permissions",
+      "Clear status reporting for leadership"
+    ]
   },
   {
-    industry: "SaaS engineering",
-    title: "Predictable releases in Zoho Sprints",
-    result: "Release adherence from sixty two to ninety five percent",
-    points: ["Backlog automation", "Blocker dashboards", "Clear DOR and DoD"],
+    industry: "Marketing Team",
+    title: "Faster delivery and fewer bottlenecks",
+    result: "Reduced turnaround times and missed deadlines",
+    points: [
+      "Automated handoffs and reminders",
+      "Prioritized sprint planning",
+      "Dashboards for accountability"
+    ]
   },
   {
-    industry: "Marketing",
-    title: "Onboarding at scale in ClickUp",
-    result: "Three hours down to twelve minutes for new hire onboarding",
-    points: ["Starter automation", "Config validation", "Reusable playbooks"],
-  },
+    industry: "Operations Team",
+    title: "Streamlined workflows and SOP alignment",
+    result: "Improved adoption and process consistency",
+    points: [
+      "Template standardization",
+      "Automation for repeatable work",
+      "Weekly reporting views"
+    ]
+  }
 ];
 
 // Process (3 steps only)
@@ -530,32 +542,22 @@ function ResourcesSection() {
 // Testimonials
 function TestimonialsSection() {
   const testimonials = [
-    { quote: "Iteratum turned a messy tool into a calm workflow. The team finally knows where to look and what to do.", author: "Sarah Chen", title: "Operations Director", company: "TechFlow" },
-    { quote: "We started hitting dates again. Projects ship faster and the dashboards are actually useful.", author: "Michael Rodriguez", title: "Founder", company: "DigiCo" },
-    { quote: "They cared about adoption as much as setup. That made all the difference.", author: "Emma Thompson", title: "Project Manager", company: "BuildPlus" },
-  ];
-
-  return (
-    <Section id="testimonials" className="py-20 bg-iteratum-gradient-subtle">
-      <div className="text-center mb-12">
-        <Pill>Client stories</Pill>
-        <h2 className="mt-4 text-iteratum-heading">What teams say after go live</h2>
-      </div>
-      <div className="grid md:grid-cols-3 gap-8">
-        {testimonials.map((t, i) => (
-          <Card key={i} className="p-6">
-            <div className="flex items-start gap-1 mb-4">{[...Array(5)].map((_, s) => (<div key={s} className="w-4 h-4 text-yellow-400">★</div>))}</div>
-            <blockquote className="text-iteratum-slate mb-4">"{t.quote}"</blockquote>
-            <div className="border-t pt-4">
-              <div className="font-semibold text-iteratum-dark">{t.author}</div>
-              <div className="text-sm text-iteratum-steel">{t.title}, {t.company}</div>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </Section>
-  );
-}
+  {
+    quote: "Our team finally has a system we actually use every day. The clarity and structure made an immediate difference.",
+    author: "Director of Operations",
+    company: "Professional Services Client"
+  },
+  {
+    quote: "Projects were slipping through the cracks before. Now everyone knows their role and nothing gets lost.",
+    author: "Marketing Lead",
+    company: "Mid-Size Team"
+  },
+  {
+    quote: "The rollout was fast, the training was simple, and the adoption from our team was better than expected.",
+    author: "VP, Project Delivery",
+    company: "Operations Client"
+  }
+];
 
 // Main
 export default function Site() {
@@ -789,3 +791,4 @@ export default function Site() {
     </div>
   );
 }
+
