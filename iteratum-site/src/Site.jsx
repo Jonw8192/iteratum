@@ -74,8 +74,7 @@ function Header({ onOpenCal }) {
             <img 
               src={ASSETS.iteratumLogo} 
               alt="Iteratum" 
-              className="h-10 w-auto" 
-            />
+                className="w-auto"             />
           </div>
 
           {/* Desktop Navigation */}
@@ -1144,3 +1143,4 @@ export default function Site() {
     </div>
   );
 }
+
