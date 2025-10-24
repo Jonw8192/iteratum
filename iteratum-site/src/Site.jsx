@@ -382,7 +382,7 @@ function AboutSection() {
   );
 }
 
-// ---------- Pricing (uniform CTAs aligned) ----------
+// ---------- Pricing (uniform buttons + tasteful highlight) ----------
 function PricingSection() {
   const packages = [
     {
@@ -413,6 +413,7 @@ function PricingSection() {
         "Integrations for up to three tools",
       ],
       popular: true,
+      note: "Recommended for most teams",
     },
     {
       name: "Enterprise",
@@ -437,40 +438,50 @@ function PricingSection() {
     <Section id="pricing" className="py-20">
       <div className="text-center mb-12">
         <Pill>Implementation Packages</Pill>
-        <h2 className="mt-4 text-iteratum-heading">
-          Clear pricing that launches your team fast
-        </h2>
+        <h2 className="mt-4 text-iteratum-heading">Clear pricing that launches your team fast</h2>
         <p className="mt-4 text-iteratum-subtitle max-w-2xl mx-auto">
           No long contracts. No surprise fees. Every package includes adoption-focused training and hands-on go-live support.
         </p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 items-stretch">
-        {packages.map((pkg, i) => (
-          <Card
-            key={i}
-            className={`relative p-8 flex flex-col ${
-              pkg.popular ? "card-iteratum-featured" : ""
-            }`}
-          >
-            {pkg.popular && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="pill-iteratum-accent">Most popular</span>
-              </div>
-            )}
+        {packages.map((pkg, i) => {
+          const featured = pkg.popular;
+          return (
+            <Card
+              key={i}
+              className={[
+                "relative p-8 flex flex-col transition-all",
+                // base
+                "border border-gray-200 bg-white",
+                // featured look (cyan ring + soft glow + tiny lift on hover)
+                featured
+                  ? "ring-2 ring-iteratum-cyan/60 ring-offset-2 ring-offset-white shadow-[0_12px_50px_rgba(2,132,199,0.12)] hover:shadow-[0_16px_60px_rgba(2,132,199,0.16)] hover:-translate-y-0.5"
+                  : "hover:-translate-y-0.5 hover:shadow-md",
+              ].join(" ")}
+            >
+              {featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="pill-iteratum-accent">Most popular</span>
+                </div>
+              )}
 
-            <div>
+              {/* Header */}
               <div className="text-center mb-6">
                 <h3 className="text-xl font-bold text-iteratum-dark">{pkg.name}</h3>
                 <div className="mt-2">
-                  <span className="text-3xl font-bold text-iteratum-dark">
-                    {pkg.price}
-                  </span>
+                  <span className="text-3xl font-bold text-iteratum-dark">{pkg.price}</span>
                   <div className="text-sm text-iteratum-steel">{pkg.duration}</div>
                 </div>
                 <p className="mt-2 text-sm text-iteratum-slate">{pkg.description}</p>
+                {featured && (
+                  <div className="mt-2 text-xs font-medium text-iteratum-cyan/90">
+                    {pkg.note}
+                  </div>
+                )}
               </div>
 
+              {/* Features */}
               <ul className="space-y-3 mb-8">
                 {pkg.features.map((feature, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm">
@@ -479,17 +490,19 @@ function PricingSection() {
                   </li>
                 ))}
               </ul>
-            </div>
 
-            <Button
-              href={CAL_LINK}
-              variant={pkg.popular ? "accent" : "ghost"}
-              className="w-full mt-auto"
-            >
-              {pkg.price === "Custom" ? "Get a custom quote" : "Get started"}
-            </Button>
-          </Card>
-        ))}
+              {/* CTA (uniform for all plans) */}
+              <Button
+                href={CAL_LINK}
+                variant="primary"                // ⬅️ every plan uses the same button style
+                className="w-full mt-auto"
+                aria-label={`${pkg.name}: ${pkg.price === "Custom" ? "Get a custom quote" : "Get started"}`}
+              >
+                {pkg.price === "Custom" ? "Get a custom quote" : "Get started"}
+              </Button>
+            </Card>
+          );
+        })}
       </div>
 
       <div className="mt-12 text-center">
@@ -504,6 +517,7 @@ function PricingSection() {
     </Section>
   );
 }
+
 
 // ---------- Content data ----------
 const valueTrio = [
@@ -1172,3 +1186,4 @@ export default function Site() {
     </div>
   );
 }
+
