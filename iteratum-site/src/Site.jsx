@@ -74,7 +74,8 @@ function Header({ onOpenCal }) {
             <img 
               src={ASSETS.iteratumLogo} 
               alt="Iteratum" 
-                className="w-auto"             />
+              className="h-10 w-auto" 
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -882,7 +883,8 @@ export default function Site() {
             <div className="mt-3 flex flex-wrap items-center gap-4">
               <img src={ASSETS.zohoProjectsBadge} alt="Zoho Projects badge" className="h-10" />
               <img src={ASSETS.zohoSprintsBadge} alt="Zoho Sprints badge" className="h-10" />
-              <img src={ASSETS.clickupVerified} alt="ClickUp Verified badge" className="h-10" />            </div>
+              <img src={ASSETS.clickupVerified} alt="ClickUp Verified badge" className="h-10" />
+            </div>
           </Card>
         </div>
       </Section>
@@ -896,7 +898,7 @@ export default function Site() {
         <h2 className="mt-3 text-iteratum-heading">
           ClickUp and Zoho implementation services that ship and stick
         </h2>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
           {services.map((s, i) => (
             <Card key={i} className="p-6">
               <div className="flex items-start gap-4">
@@ -1142,4 +1144,3 @@ export default function Site() {
     </div>
   );
 }
-
