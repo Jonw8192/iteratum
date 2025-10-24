@@ -215,6 +215,23 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--iteratum-gray-200);
   }
+
+    /* Enhanced Logo Styling */
+  .nav-iteratum img[alt="Iteratum"] {
+    height: 48px;
+    width: auto;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .nav-iteratum img[alt="Iteratum"]:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  
+  /* Ensure logo container has proper spacing */
+  .nav-iteratum .flex.items-center {
+    padding: 0 8px;
+  }
   
   /* Professional Footer */
   .footer-iteratum {
@@ -355,3 +372,4 @@
   background: var(--iteratum-cyan);
   color: white;
 }
+
