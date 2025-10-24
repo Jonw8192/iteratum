@@ -204,10 +204,11 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  .hero-iteratum {
-    background: var(--iteratum-gradient-hero);
-    border-bottom: 1px solid var(--iteratum-gray-200);
-  }
+.hero-iteratum {
+  background: var(--iteratum-gradient-hero);
+  border-bottom: 1px solid var(--iteratum-gray-200);
+  padding-top: 6rem; /* adjust this if your header height changes */
+}
   
   /* Professional Navigation */
   .nav-iteratum {
@@ -369,6 +370,7 @@
   background: var(--iteratum-cyan);
   color: white;
 }
+
 
 
 
