@@ -204,22 +204,23 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-.hero-iteratum {
-  background: var(--iteratum-gradient-hero);
-  border-bottom: 1px solid var(--iteratum-gray-200);
-  padding-top: 6rem; /* adjust this if your header height changes */
-}
+  .hero-iteratum {
+    background: var(--iteratum-gradient-hero);
+    border-bottom: 1px solid var(--iteratum-gray-200);
+  }
   
   /* Professional Navigation */
   .nav-iteratum {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-  padding: 16px 0;    border-bottom: 1px solid var(--iteratum-gray-200);
+    border-bottom: 1px solid var(--iteratum-gray-200);
   }
 
     /* Enhanced Logo Styling */
   .nav-iteratum img[alt="Iteratum"] {
-    height: 80px;    width: auto;    transition: transform 0.2s ease, opacity 0.2s ease;
+    height: 48px;
+    width: auto;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
   
   .nav-iteratum img[alt="Iteratum"]:hover {
@@ -229,7 +230,8 @@
   
   /* Ensure logo container has proper spacing */
   .nav-iteratum .flex.items-center {
-    padding: 0 16px;  }
+    padding: 0 8px;
+  }
   
   /* Professional Footer */
   .footer-iteratum {
@@ -370,7 +372,3 @@
   background: var(--iteratum-cyan);
   color: white;
 }
-
-
-
-
