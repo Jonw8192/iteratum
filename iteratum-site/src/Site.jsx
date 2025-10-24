@@ -880,8 +880,8 @@ export default function Site() {
           <Card className="p-6">
             <div className="text-sm font-semibold">Certified and trusted</div>
             <div className="mt-3 flex flex-wrap items-center gap-4">
-              <img src={ASSETS.zohoProjectsBadge} alt="Zoho Projects badge" className="h-h-20" />
-              <img src={ASSETS.zohoSprintsBadge} alt="Zoho Sprints badge" className="h-h-20" />
+              <img src={ASSETS.zohoProjectsBadge} alt="Zoho Projects badge" className="h-20" />
+              <img src={ASSETS.zohoSprintsBadge} alt="Zoho Sprints badge" className="h-20" />
               <img src={ASSETS.clickupVerified} alt="ClickUp Verified badge" className="h-20" />            </div>
           </Card>
         </div>
@@ -1142,5 +1142,6 @@ export default function Site() {
     </div>
   );
 }
+
 
 
