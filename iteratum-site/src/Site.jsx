@@ -269,22 +269,22 @@ function AboutSection() {
   );
 }
 
-// Pricing
+// ---------- Pricing Section (updated & aligned CTAs) ----------
 function PricingSection() {
   const packages = [
     {
       name: "Starter",
       price: "$2,500",
       duration: "5 to 7 days",
-      description: "For a single team or simple workspace",
+      description: "For a single team or a simple workspace",
       features: [
         "ClickUp or Zoho setup",
-        "Core workflow and views",
+        "Core workflows and saved views",
         "Team training for up to 10 users",
         "Two weeks of support",
-        "Templates and quick guides",
+        "Templates and quick guides"
       ],
-      popular: false,
+      popular: false
     },
     {
       name: "Professional",
@@ -293,69 +293,85 @@ function PricingSection() {
       description: "For growing teams that need automation and reporting",
       features: [
         "ClickUp Pro or Zoho Projects with Sprints",
-        "Automation and approvals",
+        "Automations and approvals",
         "Dashboards and executive reports",
         "Training for up to 25 users",
         "Thirty days of support",
-        "Integrations for up to three tools",
+        "Integrations for up to three tools"
       ],
-      popular: true,
+      popular: true
     },
     {
       name: "Enterprise",
       price: "Custom",
       duration: "10 to 15 days",
-      description: "For complex orgs that need scale and governance",
+      description: "For complex organizations that need scale and governance",
       features: [
-        "Multi workspace architecture",
+        "Multi-workspace architecture",
         "Advanced security and governance",
         "Unlimited user training",
         "Sixty days of support",
         "Unlimited integrations",
         "Custom reporting suite",
         "Dedicated success manager",
-        "On site training available",
+        "On-site training available"
       ],
-      popular: false,
-    },
+      popular: false
+    }
   ];
 
   return (
     <Section id="pricing" className="py-20">
       <div className="text-center mb-12">
-        <Pill>Implementation packages</Pill>
-        <h2 className="mt-4 text-iteratum-heading">Clear pricing that fits your stage</h2>
-        <p className="mt-4 text-iteratum-subtitle max-w-2xl mx-auto">No hidden fees and no long contracts. You get a working system and support until the team is comfortable.</p>
+        <Pill>Implementation Packages</Pill>
+        <h2 className="mt-4 text-iteratum-heading">
+          Clear pricing that launches your team fast
+        </h2>
+        <p className="mt-4 text-iteratum-subtitle max-w-2xl mx-auto">
+          No long contracts. No surprise fees. Every package includes adoption-focused training and hands-on go-live support.
+        </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-8 items-stretch">
         {packages.map((pkg, i) => (
-          <Card key={i} className={`p-8 relative ${pkg.popular ? "card-iteratum-featured" : ""}`}>
+          <Card
+            key={i}
+            className={`relative p-8 flex flex-col ${pkg.popular ? "card-iteratum-featured" : ""}`}
+          >
             {pkg.popular && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                 <span className="pill-iteratum-accent">Most popular</span>
               </div>
             )}
 
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-bold text-iteratum-dark">{pkg.name}</h3>
-              <div className="mt-2">
-                <span className="text-3xl font-bold text-iteratum-dark">{pkg.price}</span>
-                <div className="text-sm text-iteratum-steel">{pkg.duration}</div>
+            {/* Top: Name, price, duration, description */}
+            <div>
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-iteratum-dark">{pkg.name}</h3>
+                <div className="mt-2">
+                  <span className="text-3xl font-bold text-iteratum-dark">{pkg.price}</span>
+                  <div className="text-sm text-iteratum-steel">{pkg.duration}</div>
+                </div>
+                <p className="mt-2 text-sm text-iteratum-slate">{pkg.description}</p>
               </div>
-              <p className="mt-2 text-sm text-iteratum-slate">{pkg.description}</p>
+
+              {/* Features */}
+              <ul className="space-y-3 mb-8">
+                {pkg.features.map((feature, j) => (
+                  <li key={j} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-iteratum-success mt-0.5 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <ul className="space-y-3 mb-8">
-              {pkg.features.map((feature, j) => (
-                <li key={j} className="flex items-start gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-iteratum-success mt-0.5 flex-shrink-0" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Button href={CAL_LINK} variant={pkg.popular ? "accent" : "ghost"} className="w-full">
+            {/* Bottom: CTA always pinned */}
+            <Button
+              href={CAL_LINK}
+              variant={pkg.popular ? "accent" : "ghost"}
+              className="w-full mt-auto"
+            >
               {pkg.price === "Custom" ? "Get a custom quote" : "Get started"}
             </Button>
           </Card>
@@ -363,11 +379,14 @@ function PricingSection() {
       </div>
 
       <div className="mt-12 text-center">
-        <p className="text-sm text-iteratum-slate mb-4">All packages include a thirty day satisfaction guarantee</p>
+        <p className="text-sm text-iteratum-slate mb-4">
+          Includes a 30-day satisfaction guarantee
+        </p>
         <div className="flex flex-wrap justify-center gap-4 text-xs text-iteratum-steel">
-          <span>✓ No setup fees</span>
-          <span>✓ Money back guarantee</span>
-          <span>✓ Flexible payment terms</span>
+          <span>✓ Fast delivery</span>
+          <span>✓ Adoption-first training</span>
+          <span>✓ Clear milestones</span>
+          <span>✓ Hands-on go-live support</span>
         </div>
       </div>
     </Section>
@@ -393,7 +412,7 @@ const valueTrio = [
 const services = [
   {
     icon: Workflow,
-    title: "Zoho Projects setup",
+    title: "Zoho Projects Setup",
     desc: "Spaces, roles, fields, views, reports, and training",
     bullets: ["Blueprint and milestones", "Permissions and governance", "Dashboards and reporting"],
   },
@@ -405,7 +424,7 @@ const services = [
   },
   {
     icon: Workflow,
-    title: "ClickUp consulting",
+    title: "ClickUp Consulting",
     desc: "Workspace architecture, templates, automation, and adoption",
     bullets: ["Workspace and permissions", "Templates and dashboards", "Automation and quality checks"],
   },
@@ -417,7 +436,7 @@ const services = [
   },
   {
     icon: FolderCog,
-    title: "Ongoing improvement",
+    title: "Ongoing Improvement",
     desc: "Monthly reviews so your tools keep pace with the business",
     bullets: ["KPI reviews", "Onboarding guides", "Roadmap and scaling"],
   },
@@ -465,21 +484,21 @@ const caseStudies = [
 ];
 
 // Process (3 steps only)
-function ProcessSection() {
-  const steps = [
-    {
-      t: "Assess and plan",
-      d: "Goals, risks, success metrics, and stakeholders",
-    },
-    {
-      t: "Design and build",
-      d: "Spaces, roles, fields, views, and automation",
-    },
-    {
-      t: "Train and launch",
-      d: "Role guides, SOPs, go live, and hypercare",
-    },
-  ];
+const processSteps = [
+  {
+    t: "Assess and plan",
+    d: "We start by understanding how your team works today and what “success” looks like for you. We define goals, surface risks, align stakeholders, review your current tool setup (if you have one), and document how you want work to flow. The outcome is a clear, agreed-upon plan before any build begins."
+  },
+  {
+    t: "Design and build",
+    d: "We design a workspace that matches your real processes instead of forcing your team into a rigid template. This includes spaces, statuses, roles, permissions, task types, custom fields, views, automations, and reporting. You see the build as it progresses, and we make adjustments while it’s still easy to change."
+  },
+  {
+    t: "Train and launch",
+    d: "Once the system is ready, we train your team by role, not with generic tutorials. Everyone learns the specific views and workflows they’ll use in their day-to-day work. We handle go-live support, answer questions in real time, and stay engaged during hypercare until your team is fully confident."
+  }
+];
+
 
   return (
     <Section id="process" className="py-20 bg-iteratum-gradient-subtle">
@@ -732,11 +751,18 @@ export default function Site() {
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
                 <img src={ASSETS.iteratumLogo} alt="Iteratum" className="h-8 w-8 rounded-md" />
-                <span className="text-xl font-bold text-white">Iteratum</span>
               </div>
               <p className="text-sm text-gray-300 mb-6 max-w-md">ClickUp and Zoho implementation that launches fast and drives real adoption. Clean setup, automation, and training for teams that want clarity.</p>
               <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2 text-gray-300"><Users className="w-4 h-4" /><span>hello@iteratum.com</span></div>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Users className="w-4 h-4" />
+                  <a
+                    href="mailto:hello@iteratum.com?subject=Inquiry%20from%20Iteratum%20Website"
+    className="hover:text-white transition-colors underline underline-offset-2"
+                    >
+                    hello@iteratum.com
+                  </a>
+                </div>
                 <div className="flex items-center gap-2 text-gray-300"><Bot className="w-4 h-4" /><span>Available Monday to Friday, 9am to 5pm Eastern</span></div>
               </div>
             </div>
@@ -779,8 +805,8 @@ export default function Site() {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
               <div className="text-sm text-gray-400">© {new Date().getFullYear()} Iteratum. All rights reserved.</div>
               <div className="flex items-center gap-6 text-sm text-gray-400">
-                <div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4" /><span>Strong security practices</span></div>
-                <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /><span>Thirty day guarantee</span></div>
+                <div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4" /><span>Strong Security Practices</span></div>
+                <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /><span>30 Day Guarantee</span></div>
               </div>
             </div>
           </div>
@@ -791,4 +817,5 @@ export default function Site() {
     </div>
   );
 }
+
 
