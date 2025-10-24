@@ -213,14 +213,12 @@
   .nav-iteratum {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-      padding: 12px 0;
-    border-bottom: 1px solid var(--iteratum-gray-200);
+  padding: 16px 0;    border-bottom: 1px solid var(--iteratum-gray-200);
   }
 
     /* Enhanced Logo Styling */
   .nav-iteratum img[alt="Iteratum"] {
-    height: 64px;    width: auto;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    height: 80px;    width: auto;    transition: transform 0.2s ease, opacity 0.2s ease;
   }
   
   .nav-iteratum img[alt="Iteratum"]:hover {
@@ -371,5 +369,6 @@
   background: var(--iteratum-cyan);
   color: white;
 }
+
 
 
