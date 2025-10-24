@@ -213,13 +213,13 @@
   .nav-iteratum {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+      padding: 12px 0;
     border-bottom: 1px solid var(--iteratum-gray-200);
   }
 
     /* Enhanced Logo Styling */
   .nav-iteratum img[alt="Iteratum"] {
-    height: 48px;
-    width: auto;
+    height: 64px;    width: auto;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
   
@@ -230,8 +230,7 @@
   
   /* Ensure logo container has proper spacing */
   .nav-iteratum .flex.items-center {
-    padding: 0 8px;
-  }
+    padding: 0 16px;  }
   
   /* Professional Footer */
   .footer-iteratum {
@@ -372,4 +371,5 @@
   background: var(--iteratum-cyan);
   color: white;
 }
+
 
