@@ -228,72 +228,57 @@ function Hero({ setOpenCal }) {
   );
 }
 
-// ---------- Trust / Badges (larger, centered) ----------
+// ---------- Trust / Badges (larger, matched cards) ----------
 function TrustSection() {
   return (
-    <Section id="trust" className="pt-4 pb-2">
+    <Section id="trust" className="pt-4 pb-6">
       <div
-        className="mx-auto flex items-center justify-center gap-10 rounded-2xl px-8 py-5"
+        className="mx-auto max-w-5xl rounded-2xl px-6 py-6"
         style={{ background: "#f7f7f5", border: "1px solid #e5e5e5" }}
       >
-        <img src={ASSETS.clickupVerified} alt="ClickUp Verified Consultant" className="h-10 md:h-12" />
-        <img src={ASSETS.zohoPartner} alt="Zoho Authorized Partner" className="h-10 md:h-12" />
+        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-3">
+            <img
+              src={ASSETS.clickupVerified}
+              alt="ClickUp Verified Consultant"
+              className="h-14 md:h-16 object-contain"
+            />
+          </div>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-3">
+            <img
+              src={ASSETS.zohoPartner}
+              alt="Zoho Authorized Partner"
+              className="h-14 md:h-16 object-contain"
+            />
+          </div>
+        </div>
+        <div className="text-center text-xs md:text-sm text-neutral-600 mt-4">
+          Certified experts in ClickUp and Zoho.
+        </div>
       </div>
     </Section>
   );
 }
 
-// ---------- Problem ----------
-function ProblemSection() {
-  const items = [
-    "Projects slip through the cracks",
-    "Nobody follows the system",
-    "Deadlines get missed",
-    "Ownership is unclear",
-    "Leadership can’t see what’s happening",
-  ];
-  return (
-    <Section id="problem" className="py-16">
-      <div className="max-w-3xl mx-auto text-center">
-        <Pill>Why teams struggle</Pill>
-        <h2 className="mt-4 text-iteratum-heading">It’s not a tool problem. It’s an adoption problem.</h2>
-        <p className="mt-4 text-iteratum-subtitle">
-          When work lives in too many places, your system stops being the source of truth.
-        </p>
-      </div>
-      <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((t, i) => (
-          <Card key={i} className="p-5">
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0 text-iteratum-success" />
-              <span className="text-sm text-neutral-800">{t}</span>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-// ---------- Promise / Value Prop ----------
-function PromiseSection() {
+// ---------- 3 Pillars (replaces awkward 2-card row) ----------
+function PillarsSection() {
   const pillars = [
-    { t: "Clarity", d: "Everyone sees what matters, where it lives, and what’s next." },
-    { t: "Accountability", d: "Ownership is unmistakable and work moves on time." },
-    { t: "Adoption", d: "The system becomes the habit teams rely on every day." },
+    { t: "Clarity", d: "One source of truth for work, owners, and status." },
+    { t: "Accountability", d: "Role-based views and clear ownership at every step." },
+    { t: "Adoption", d: "Training and habits that make the system stick." },
   ];
   return (
-    <Section id="value" className="py-16 bg-iteratum-gradient-subtle">
+    <Section id="pillars" className="py-16">
       <div className="text-center max-w-3xl mx-auto">
-        <Pill>The outcome</Pill>
-        <h2 className="mt-4 text-iteratum-heading">We build workspaces teams actually use</h2>
-        <p className="mt-3 text-iteratum-subtitle">
-          Clean structure, smart automation, and role-based training — launched in about 10 business days.
+        <Pill>Why teams succeed</Pill>
+        <h2 className="mt-3 text-iteratum-heading">It’s not the tool — it’s adoption</h2>
+        <p className="mt-2 text-iteratum-subtitle">
+          We design the structure and the behaviors so your team actually uses it.
         </p>
       </div>
       <div className="mt-10 grid md:grid-cols-3 gap-6">
         {pillars.map((p, i) => (
-          <Card key={i} className="p-6 text-center">
+          <Card key={i} className="p-6">
             <h3 className="text-lg font-semibold text-iteratum-dark">{p.t}</h3>
             <p className="text-sm text-neutral-700 mt-2">{p.d}</p>
           </Card>
@@ -308,12 +293,12 @@ function ProductTabsSection() {
   const [tab, setTab] = useState("clickup");
 
   const baseTab =
-    "px-3 py-2 text-sm font-medium rounded-lg border transition";
+    "px-4 py-2.5 text-sm font-semibold rounded-xl border transition";
   const active = "bg-white border-gray-200 shadow";
-  const inactive = "bg-transparent border-transparent hover:bg-white/60";
+  const inactive = "bg-transparent border-transparent hover:bg-white/70";
 
   return (
-    <Section id="products" className="py-18 py-16">
+    <Section id="products" className="py-16">
       <div className="text-center max-w-3xl mx-auto mb-6">
         <Pill>Choose your platform</Pill>
         <h2 className="mt-3 text-iteratum-heading">ClickUp or Zoho — implemented the right way</h2>
@@ -322,8 +307,8 @@ function ProductTabsSection() {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-center gap-2 mb-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex items-center justify-center gap-2 mb-8">
           <button
             className={`${baseTab} ${tab === "clickup" ? active : inactive}`}
             onClick={() => setTab("clickup")}
@@ -352,7 +337,7 @@ function ClickUpCard() {
   ];
   return (
     <Card className="p-8 bg-white border border-gray-200">
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h3 className="text-xl font-bold text-iteratum-dark">ClickUp Implementations</h3>
           <p className="text-sm text-neutral-700 mt-2">
@@ -372,7 +357,9 @@ function ClickUpCard() {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <img src={ASSETS.clickupVerified} alt="ClickUp Verified Consultant" className="h-14 md:h-16" />
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-3">
+            <img src={ASSETS.clickupVerified} alt="ClickUp Verified Consultant" className="h-16 md:h-20 object-contain" />
+          </div>
         </div>
       </div>
     </Card>
@@ -387,7 +374,7 @@ function ZohoCard() {
   ];
   return (
     <Card className="p-8 bg-white border border-gray-200">
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h3 className="text-xl font-bold text-iteratum-dark">Zoho Implementations</h3>
           <p className="text-sm text-neutral-700 mt-2">
@@ -407,7 +394,9 @@ function ZohoCard() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-4">
-          <img src={ASSETS.zohoPartner} alt="Zoho Authorized Partner" className="h-14 md:h-16" />
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-3">
+            <img src={ASSETS.zohoPartner} alt="Zoho Authorized Partner" className="h-16 md:h-20 object-contain" />
+          </div>
           <div className="flex items-center gap-4 opacity-90">
             <img src={ASSETS.zohoProjectsBadge} alt="Zoho Projects Partner" className="h-8" />
             <img src={ASSETS.zohoSprintsBadge} alt="Zoho Sprints Partner" className="h-8" />
@@ -461,27 +450,51 @@ function ProcessSection() {
   );
 }
 
-// ---------- Results / Proof ----------
-const caseStudies = [
+// ---------- Outcomes (SaaS Bold with colored header band) ----------
+const outcomes = [
   {
-    industry: "Professional Services",
+    tag: "PROFESSIONAL SERVICES",
     title: "Improved team visibility and workload clarity",
-    result: "Decreased project delays across departments",
+    subtitle: "Decreased project delays across departments",
+    color: "cyan",
     points: ["Unified task intake", "Role-owned views & permissions", "Clear status reporting for leadership"],
   },
   {
-    industry: "Marketing Team",
+    tag: "MARKETING TEAM",
     title: "Faster delivery and fewer bottlenecks",
-    result: "Reduced turnaround times and missed deadlines",
+    subtitle: "Reduced turnaround times and missed deadlines",
+    color: "violet",
     points: ["Automated handoffs & reminders", "Prioritized sprint planning", "Dashboards for accountability"],
   },
   {
-    industry: "Operations Team",
+    tag: "OPERATIONS TEAM",
     title: "Streamlined workflows and SOP alignment",
-    result: "Improved adoption and process consistency",
+    subtitle: "Improved adoption and process consistency",
+    color: "emerald",
     points: ["Template standardization", "Automation for repeatable work", "Weekly reporting views"],
   },
 ];
+
+const colorMap = {
+  cyan: {
+    band: "bg-cyan-50",
+    text: "text-cyan-900",
+    border: "border-cyan-200",
+    accent: "text-cyan-700",
+  },
+  violet: {
+    band: "bg-violet-50",
+    text: "text-violet-900",
+    border: "border-violet-200",
+    accent: "text-violet-700",
+  },
+  emerald: {
+    band: "bg-emerald-50",
+    text: "text-emerald-900",
+    border: "border-emerald-200",
+    accent: "text-emerald-700",
+  },
+};
 
 function ResultsSection() {
   return (
@@ -490,22 +503,39 @@ function ResultsSection() {
         <Pill>Results</Pill>
         <h2 className="mt-3 text-iteratum-heading">Outcomes teams care about</h2>
       </div>
+
       <div className="mt-8 grid md:grid-cols-3 gap-6">
-        {caseStudies.map((c, i) => (
-          <Card key={i} className="p-6">
-            <div className="text-xs uppercase tracking-wide text-neutral-500">{c.industry}</div>
-            <div className="mt-1 text-lg font-semibold">{c.title}</div>
-            <div className="mt-1 text-sm text-emerald-700 font-semibold">{c.result}</div>
-            <ul className="mt-3 space-y-2 text-sm text-neutral-700">
-              {c.points.map((p, j) => (
-                <li key={j} className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </Card>
-        ))}
+        {outcomes.map((o, i) => {
+          const c = colorMap[o.color];
+          return (
+            <Card key={i} className={`p-0 border ${c.border} bg-white`}>
+              {/* Colored Header Band with equal height */}
+              <div className={`${c.band} ${c.text} rounded-t-2xl px-5 py-4 min-h-[98px] flex flex-col justify-center`}>
+                <div className="text-[11px] tracking-widest font-semibold opacity-70">
+                  {o.tag}
+                </div>
+                <div className="mt-1 text-lg font-semibold leading-snug">
+                  {o.title}
+                </div>
+                <div className={`mt-1 text-sm font-medium ${c.accent}`}>
+                  {o.subtitle}
+                </div>
+              </div>
+
+              {/* Body */}
+              <div className="p-6">
+                <ul className="space-y-2 text-sm text-neutral-800">
+                  {o.points.map((p, j) => (
+                    <li key={j} className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 mt-0.5 flex-shrink-0 text-iteratum-success" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Card>
+          );
+        })}
       </div>
     </Section>
   );
@@ -560,7 +590,7 @@ function TestimonialsSection() {
   );
 }
 
-// ---------- Pricing (kept, with uniform buttons) ----------
+// ---------- Pricing ----------
 function PricingSection() {
   const packages = [
     {
@@ -920,8 +950,7 @@ export default function Site() {
 
       <Hero setOpenCal={setOpenCal} />
       <TrustSection />
-      <ProblemSection />
-      <PromiseSection />
+      <PillarsSection />
       <ProductTabsSection />
       <ProcessSection />
       <ResultsSection />
