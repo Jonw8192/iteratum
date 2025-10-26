@@ -858,7 +858,6 @@ function Footer() {
               <li><a href="#results" className="hover:text-white transition-colors">Results</a></li>
               <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
               <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
             </ul>
           </div>
 
@@ -875,10 +874,10 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="#about" className="hover:text-white transition-colors">About Iteratum</a></li>
+              <li><a href="/about" className="hover:text-white transition-colors">About Iteratum</a></li>
               <li><a href="#results" className="hover:text-white transition-colors">Client success</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Privacy policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of service</a></li>
+              <li><a href="/privacy-policy" className="hover:text-white transition-colors">Privacy policy</a></li>
+              <li><a href="/terms-of-service" className="hover:text-white transition-colors">Terms of service</a></li>
             </ul>
           </div>
         </div>
@@ -965,3 +964,4 @@ export default function Site() {
     </div>
   );
 }
+
