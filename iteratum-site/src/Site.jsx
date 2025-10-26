@@ -21,7 +21,7 @@ import {
 const ASSETS = {
   iteratumLogo: "/iteratum-logo.webp",
   clickupVerified: "/clickup-verified.png",
-  zohoPartner: "/zoho-partner.png", // ensure file exists; name per your assets
+  zohoPartner: "/zoho-partner.png", // ensure this file exists in /public
   zohoProjectsBadge: "/projects.svg",
   zohoSprintsBadge: "/sprints.svg",
 };
@@ -52,7 +52,6 @@ function Seo() {
     setMeta('meta[name="description"]', { content: description });
     setMeta('meta[name="robots"]', { content: "index,follow" });
 
-    // JSON-LD
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.innerHTML = JSON.stringify({
@@ -169,7 +168,7 @@ function Header({ onOpenCal }) {
               FAQ
             </a>
             <a
-              href="#about"
+              href="/about"
               className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors"
             >
               About
@@ -209,7 +208,7 @@ function Header({ onOpenCal }) {
               <a href="#faq" className="text-sm font-medium text-iteratum-charcoal">
                 FAQ
               </a>
-              <a href="#about" className="text-sm font-medium text-iteratum-charcoal">
+              <a href="/about" className="text-sm font-medium text-iteratum-charcoal">
                 About
               </a>
               <button onClick={onOpenCal} className="btn-iteratum-primary mt-4 w-full">
@@ -297,7 +296,7 @@ function Hero({ setOpenCal }) {
   );
 }
 
-// ---------- Trust / Badges (TB-A: Large Side-By-Side) ----------
+// ---------- Trust / Badges (TB-A2: Large + Light Gray Strip) ----------
 function TrustSection() {
   return (
     <Section id="trust" className="pt-4 pb-6">
@@ -328,24 +327,15 @@ function TrustSection() {
 // ---------- 3 Pillars / What We Do ----------
 function PillarsSection() {
   const pillars = [
-    {
-      t: "Clarity",
-      d: "One source of truth for work, owners, and status.",
-    },
-    {
-      t: "Accountability",
-      d: "Role-based views and simple checks keep work moving.",
-    },
-    {
-      t: "Adoption",
-      d: "Training and templates make the system stick.",
-    },
+    { t: "Clarity", d: "One source of truth for work, owners, and status." },
+    { t: "Accountability", d: "Role-based views and simple checks keep work moving." },
+    { t: "Adoption", d: "Training and templates make the system stick." },
   ];
   return (
     <Section id="value-trio" className="py-16">
       <div className="text-center max-w-3xl mx-auto">
         <Pill>Why Teams Succeed</Pill>
-        <h2 className="mt-3 text-iteratum-heading">It’s Not The Tool — It’s Adoption</h2>
+        <h2 className="mt-3 text-iteratum-heading">It’s Not the Tool — It’s Adoption</h2>
         <p className="mt-2 text-iteratum-subtitle">
           We design the structure and the behaviors so your team actually uses it.
         </p>
@@ -376,7 +366,7 @@ function ProductTabsSection() {
       <div className="text-center max-w-3xl mx-auto mb-6">
         <Pill>Choose Your Platform</Pill>
         <h2 className="mt-3 text-iteratum-heading">
-          ClickUp and Zoho Implemented The Right Way
+          ClickUp and Zoho Implemented the Right Way
         </h2>
         <p className="mt-2 text-iteratum-subtitle">
           Two paths. Same promise: clarity, accountability, adoption.
@@ -448,7 +438,7 @@ function ClickUpCard() {
 
 function ZohoCard() {
   const bullets = [
-    "Projects and Sprints Configured To Your Workflow",
+    "Projects and Sprints Configured to Your Workflow",
     "Blueprints, Roles, Fields, Views, Reports",
     "Automation, Dashboards, and Governance",
   ];
@@ -512,7 +502,7 @@ function ProcessSection() {
     <Section id="how-it-works" className="py-20 bg-iteratum-gradient-subtle">
       <div className="text-center mb-10">
         <Pill>The 10-Day Plan</Pill>
-        <h2 className="mt-4 text-iteratum-heading">Simple Steps To Real Adoption</h2>
+        <h2 className="mt-4 text-iteratum-heading">Simple Steps to Real Adoption</h2>
         <p className="mt-3 text-iteratum-subtitle max-w-2xl mx-auto">
           Clear milestones, visible progress, and a system your team will actually use.
         </p>
@@ -534,7 +524,7 @@ function ProcessSection() {
   );
 }
 
-// ---------- Outcomes (SaaS Bold with colored header band) ----------
+// ---------- Outcomes ----------
 const outcomes = [
   {
     tag: "PROFESSIONAL SERVICES",
@@ -544,7 +534,7 @@ const outcomes = [
     points: [
       "Unified Task Intake",
       "Role-Owned Views and Permissions",
-      "Clear Status Reporting For Leadership",
+      "Clear Status Reporting for Leadership",
     ],
   },
   {
@@ -555,7 +545,7 @@ const outcomes = [
     points: [
       "Automated Handoffs and Reminders",
       "Prioritized Sprint Planning",
-      "Dashboards For Accountability",
+      "Dashboards for Accountability",
     ],
   },
   {
@@ -565,7 +555,7 @@ const outcomes = [
     color: "emerald",
     points: [
       "Template Standardization",
-      "Automation For Repeatable Work",
+      "Automation for Repeatable Work",
       "Weekly Reporting Views",
     ],
   },
@@ -605,7 +595,7 @@ function ResultsSection() {
           const c = colorMap[o.color];
           return (
             <Card key={i} className={`p-0 border ${c.border} bg-white`}>
-              {/* Colored Header Band with equal height */}
+              {/* Equal-height header band for visual balance */}
               <div className={`${c.band} ${c.text} rounded-t-2xl px-5 py-4 min-h-[98px] flex flex-col justify-center`}>
                 <div className="text-[11px] tracking-widest font-semibold opacity-70">
                   {o.tag}
@@ -618,7 +608,6 @@ function ResultsSection() {
                 </div>
               </div>
 
-              {/* Body */}
               <div className="p-6">
                 <ul className="space-y-2 text-sm text-neutral-800">
                   {o.points.map((p, j) => (
@@ -643,7 +632,7 @@ function TestimonialsSection() {
     {
       quote:
         "Our team finally has a system we use every day. The structure and role-based views created immediate clarity.",
-      author: "Director Of Operations",
+      author: "Director of Operations",
       company: "Professional Services Client",
     },
     {
@@ -675,7 +664,7 @@ function TestimonialsSection() {
               ))}
             </div>
             <blockquote className="text-iteratum-slate mb-4">“{t.quote}”</blockquote>
-            <div className="border-top pt-4">
+            <div className="border-t pt-4">
               <div className="font-semibold text-iteratum-dark">{t.author}</div>
               <div className="text-sm text-iteratum-steel">{t.company}</div>
             </div>
@@ -692,13 +681,13 @@ function PricingSection() {
     {
       name: "Starter",
       price: "$2,500",
-      duration: "5 To 7 Days",
+      duration: "5 to 7 Days",
       description: "For a single team or a simple workspace",
       features: [
         "ClickUp or Zoho Setup",
         "Core Workflows and Saved Views",
-        "Team Training For Up To 10 Users",
-        "Two Weeks Of Support",
+        "Team Training for Up to 10 Users",
+        "Two Weeks of Support",
         "Templates and Quick Guides",
       ],
       popular: false,
@@ -706,29 +695,29 @@ function PricingSection() {
     {
       name: "Professional",
       price: "$4,500",
-      duration: "8 To 10 Days",
+      duration: "8 to 10 Days",
       description: "For growing teams that need automation and reporting",
       features: [
         "ClickUp Pro or Zoho Projects With Sprints",
         "Automations and Approvals",
         "Dashboards and Executive Reports",
-        "Training For Up To 25 Users",
-        "Thirty Days Of Support",
-        "Integrations For Up To Three Tools",
+        "Training for Up to 25 Users",
+        "Thirty Days of Support",
+        "Integrations for Up to Three Tools",
       ],
       popular: true,
-      note: "Recommended For Most Teams",
+      note: "Recommended for Most Teams",
     },
     {
       name: "Enterprise",
       price: "Custom",
-      duration: "10 To 15 Days",
+      duration: "10 to 15 Days",
       description: "For complex organizations that need scale and governance",
       features: [
         "Multi-Workspace Architecture",
         "Advanced Security and Governance",
         "Unlimited User Training",
-        "Sixty Days Of Support",
+        "Sixty Days of Support",
         "Unlimited Integrations",
         "Custom Reporting Suite",
         "Dedicated Success Manager",
@@ -795,9 +784,9 @@ function PricingSection() {
                 href={CAL_LINK}
                 variant="primary"
                 className="w-full mt-auto"
-                ariaLabel={`${pkg.name}: ${pkg.price === "Custom" ? "Get A Custom Quote" : "Get Started"}`}
+                ariaLabel={`${pkg.name}: ${pkg.price === "Custom" ? "Get a Custom Quote" : "Get Started"}`}
               >
-                {pkg.price === "Custom" ? "Get A Custom Quote" : "Get Started"}
+                {pkg.price === "Custom" ? "Get a Custom Quote" : "Get Started"}
               </Button>
             </Card>
           );
@@ -857,7 +846,7 @@ function FinalCTA({ setOpenCal }) {
           <div>
             <Pill>Get Started</Pill>
             <h3 className="mt-3 text-iteratum-heading">
-              Give Your Team A System They Can Rely On
+              Give Your Team a System They Can Rely On
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-700">
               <li className="flex items-start gap-2">
@@ -908,7 +897,7 @@ function FinalCTA({ setOpenCal }) {
 // ---------- About Preview (AP-1) ----------
 function AboutPreview() {
   return (
-    <Section id="about" className="py-16">
+    <Section id="about-preview" className="py-16">
       <div className="max-w-4xl mx-auto text-center">
         <Pill>About Iteratum</Pill>
         <h2 className="mt-3 text-iteratum-heading">We Make Adoption Succeed</h2>
@@ -951,7 +940,7 @@ function Footer() {
               </div>
               <div className="flex items-center gap-2 text-gray-300">
                 <Bot className="w-4 h-4" />
-                <span>Available Monday To Friday, 9am To 5pm Eastern</span>
+                <span>Available Monday to Friday, 9am to 5pm Eastern</span>
               </div>
             </div>
           </div>
@@ -959,83 +948,31 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Navigation</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>
-                <a href="#how-it-works" className="hover:text-white transition-colors">
-                  How It Works
-                </a>
-              </li>
-              <li>
-                <a href="#products" className="hover:text-white transition-colors">
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="#results" className="hover:text-white transition-colors">
-                  Results
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-white transition-colors">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-white transition-colors">
-                  FAQ
-                </a>
-              </li>
+              <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors">Products</a></li>
+              <li><a href="#results" className="hover:text-white transition-colors">Results</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
+              <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>
-                <a href="#products" className="hover:text-white transition-colors">
-                  ClickUp Implementations
-                </a>
-              </li>
-              <li>
-                <a href="#products" className="hover:text-white transition-colors">
-                  Zoho Implementations
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-white transition-colors">
-                  Automation & QA
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-white transition-colors">
-                  Team Training
-                </a>
-              </li>
+              <li><a href="#products" className="hover:text-white transition-colors">ClickUp Implementations</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors">Zoho Implementations</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">Automation & QA</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">Team Training</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>
-                <a href="/about" className="hover:text-white transition-colors">
-                  About Iteratum
-                </a>
-              </li>
-              <li>
-                <a href="#results" className="hover:text-white transition-colors">
-                  Client Success
-                </a>
-              </li>
-              <li>
-                <a href="/privacy-policy" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="/terms-of-service" className="hover:text-white transition-colors">
-                  Terms Of Service
-                </a>
-              </li>
+              <li><a href="/about" className="hover:text-white transition-colors">About Iteratum</a></li>
+              <li><a href="#results" className="hover:text-white transition-colors">Client Success</a></li>
+              <li><a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms-of-service" className="hover:text-white transition-colors">Terms Of Service</a></li>
             </ul>
           </div>
         </div>
@@ -1082,30 +1019,14 @@ function ZohoWebToLead({ iframeFallback }) {
   return (
     <div>
       <form onSubmit={handleSubmit} className="space-y-3">
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First name"
-          className="input-iteratum"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Work email"
-          className="input-iteratum"
-          required
-        />
-        <button type="submit" className="btn-iteratum-primary w-full">
-          Get The Checklist
-        </button>
+        <input type="text" name="firstName" placeholder="First name" className="input-iteratum" required />
+        <input type="email" name="email" placeholder="Work email" className="input-iteratum" required />
+        <button type="submit" className="btn-iteratum-primary w-full">Get the Checklist</button>
       </form>
 
       {iframeFallback && (
         <details className="mt-4">
-          <summary className="text-xs text-gray-500 cursor-pointer">
-            Having trouble? Try the alternate form
-          </summary>
+          <summary className="text-xs text-gray-500 cursor-pointer">Having trouble? Try the alternate form</summary>
           <iframe
             title="Zoho Web Form"
             src={iframeFallback}
