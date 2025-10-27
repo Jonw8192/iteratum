@@ -1,5 +1,6 @@
-// src/PrivacyPolicy.jsx
 import React, { useEffect } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function PrivacyPolicy() {
   useEffect(() => {
@@ -7,59 +8,69 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-800 page-enter">
-      <section className="section-iteratum py-28">
-        <h1 className="text-iteratum-hero mb-6">Privacy Policy</h1>
-        <p className="text-iteratum-subtitle max-w-3xl mb-10">
-          We respect your privacy and are committed to protecting your data. This policy outlines what we collect, how we use it, and your rights.
-        </p>
+    <>
+      <Header />
+      <div className="bg-white min-h-screen page-enter">
+        {/* Page Hero */}
+        <section className="section-iteratum text-center py-24 border-b border-iteratum-gray-200 bg-iteratum-gradient-subtle">
+          <h1 className="text-iteratum-hero mb-3">Privacy Policy</h1>
+          <p className="text-iteratum-subtitle max-w-2xl mx-auto">
+            Your privacy matters to us. Here is how we collect, use, and protect your information.
+          </p>
+        </section>
 
-        <div className="space-y-10 max-w-3xl leading-relaxed">
-          <section>
+        {/* Content */}
+        <section className="section-iteratum py-16 max-w-3xl mx-auto space-y-10 leading-relaxed">
+          <div>
             <h2 className="text-iteratum-heading mb-2">Information We Collect</h2>
             <p>
-              We only collect information that helps us serve you, such as your name, email, and project details submitted through our forms.
+              We collect basic contact details you provide, such as your name, email address, and project information.
+              We only gather what is necessary to communicate and deliver our services effectively.
             </p>
-          </section>
+          </div>
 
-          <section>
-            <h2 className="text-iteratum-heading mb-2">How We Use Your Information</h2>
+          <div>
+            <h2 className="text-iteratum-heading mb-2">How Your Information Is Used</h2>
             <p>
-              We use your data to respond to inquiries, deliver services, schedule consultations, and send relevant updates when requested.
+              We use your information to respond to inquiries, schedule consultations, share resources, deliver services,
+              and provide relevant updates when requested.
             </p>
-          </section>
+          </div>
 
-          <section>
-            <h2 className="text-iteratum-heading mb-2">Data Sharing</h2>
+          <div>
+            <h2 className="text-iteratum-heading mb-2">Sharing & Third Parties</h2>
             <p>
-              We do not sell or share your personal information with third parties, except trusted platforms we use to operate (such as scheduling, CRM, and email tools).
+              We do not sell your data. We only share information with trusted tools (such as scheduling, CRM,
+              or analytics platforms) that help us operate and deliver our services.
             </p>
-          </section>
+          </div>
 
-          <section>
-            <h2 className="text-iteratum-heading mb-2">Cookies & Analytics</h2>
+          <div>
+            <h2 className="text-iteratum-heading mb-2">Data & Cookies</h2>
             <p>
-              We may collect anonymized analytics to understand website performance and improve the user experience.
+              We may use cookies or anonymized analytics to understand website performance and improve the experience
+              for visitors. You may disable cookies in your browser settings at any time.
             </p>
-          </section>
+          </div>
 
-          <section>
+          <div>
             <h2 className="text-iteratum-heading mb-2">Your Rights</h2>
             <p>
-              You may request access, correction, or deletion of your personal data by contacting{" "}
+              You may request a copy, correction, or deletion of your personal information by contacting{" "}
               <a className="underline" href="mailto:hello@iteratum.com">hello@iteratum.com</a>.
             </p>
-          </section>
+          </div>
 
-          <section>
+          <div>
             <h2 className="text-iteratum-heading mb-2">Contact</h2>
             <p>
-              If you have any questions about this policy, please reach out to us at{" "}
+              If you have any questions about this Privacy Policy, please reach out at{" "}
               <a className="underline" href="mailto:hello@iteratum.com">hello@iteratum.com</a>.
             </p>
-          </section>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+      </div>
+      <Footer />
+    </>
   );
 }
