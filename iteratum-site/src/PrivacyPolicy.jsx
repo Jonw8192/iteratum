@@ -10,12 +10,13 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Header />
-      <div className="bg-white min-h-screen page-enter">
-        {/* Page Hero */}
+
+      <main className="bg-white min-h-screen page-enter pt-20">
+        {/* Page Hero (H1 Centered + LS1 subtitle) */}
         <section className="section-iteratum text-center py-24 border-b border-iteratum-gray-200 bg-iteratum-gradient-subtle">
           <h1 className="text-iteratum-hero mb-3">Privacy Policy</h1>
           <p className="text-iteratum-subtitle max-w-2xl mx-auto">
-            Your privacy matters to us. Here is how we collect, use, and protect your information.
+            Our policies that keep your data protected and your experience reliable.
           </p>
         </section>
 
@@ -69,7 +70,8 @@ export default function PrivacyPolicy() {
             </p>
           </div>
         </section>
-      </div>
+      </main>
+
       <Footer />
     </>
   );
