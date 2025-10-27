@@ -103,7 +103,7 @@ const Card = ({ children, className = "" }) => (
   <div className={`card-iteratum ${className}`}>{children}</div>
 );
 
-/* -------------------- Header (local copy for this page) -------------------- */
+/* -------------------- Header (local copy) -------------------- */
 function Header() {
   const [open, setOpen] = useState(false);
   return (
@@ -150,7 +150,7 @@ function Header() {
   );
 }
 
-/* -------------------- Footer (local copy for this page) -------------------- */
+/* -------------------- Footer (local copy) -------------------- */
 function Footer() {
   return (
     <footer className="footer-iteratum">
@@ -223,48 +223,117 @@ function Footer() {
   );
 }
 
-/* -------------------- System Diagram (inline SVG) -------------------- */
-function SystemDiagram() {
+/* -------------------- Gradient Hybrid Diagram (S2 style) -------------------- */
+/** Option D: Before → System Flow → After, with subtle cyan/purple gradients */
+function HybridDiagram() {
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8">
-      <div className="rounded-2xl border border-gray-200 bg-white p-6">
+    <div className="w-full max-w-5xl mx-auto">
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
         <svg
-          role="img"
-          aria-label="System diagram: Clarity to Accountability to Adoption to Outcomes"
-          viewBox="0 0 960 260"
+          viewBox="0 0 1100 480"
           className="w-full h-auto"
+          role="img"
+          aria-label="From chaos to clarity through the Iteratum system flow"
         >
           <defs>
-            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="rgba(2,132,199,0.18)" />
+            {/* Gradients */}
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#7c3aed" />
+              <stop offset="100%" stopColor="#06b6d4" />
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#06b6d4" />
+              <stop offset="100%" stopColor="#7c3aed" />
+            </linearGradient>
+            {/* Soft glow */}
+            <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="rgba(6,182,212,0.15)" />
             </filter>
+            <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="rgba(124,58,237,0.16)" />
+            </filter>
+            {/* Box helper */}
+            <symbol id="box" viewBox="0 0 240 120">
+              <rect x="0.5" y="0.5" width="239" height="119" rx="16" fill="white" stroke="#e5e7eb" />
+            </symbol>
           </defs>
 
-          {/* Boxes */}
-          {[
-            { x: 30,  t: "Clarity",        d: "Work, owners, and status" },
-            { x: 270, t: "Accountability", d: "Role-based views and checks" },
-            { x: 540, t: "Adoption",       d: "Training and templates" },
-            { x: 780, t: "Outcomes",       d: "On-time delivery and visibility" },
-          ].map((b, i) => (
-            <g key={i} transform={`translate(${b.x}, 40)`} filter="url(#soft)">
-              <rect width="150" height="120" rx="14" fill="#ffffff" stroke="#e5e7eb" />
-              <text x="75" y="50" textAnchor="middle" fontSize="16" fontWeight="700" fill="#0f172a">
-                {b.t}
-              </text>
-              <text x="75" y="78" textAnchor="middle" fontSize="12" fill="#475569">
-                {b.d}
-              </text>
+          {/* Top Row: Before (Chaos) */}
+          <g transform="translate(40, 32)">
+            <text x="0" y="0" fontSize="14" fill="#64748b">Before</text>
+            <g transform="translate(0, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Chaos</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">Scattered tools · unclear owners · missed deadlines</text>
             </g>
-          ))}
 
-          {/* Arrows */}
-          {[160, 400, 670].map((ax, i) => (
-            <g key={i} transform={`translate(${ax}, 100)`}>
-              <path d="M0 30 H70" stroke="#0891b2" strokeWidth="2.5" fill="none" />
-              <polygon points="70,30 60,24 60,36" fill="#0891b2" />
+            <g transform="translate(280, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Noise</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">Too many views · no single truth · no habit</text>
             </g>
-          ))}
+
+            <g transform="translate(560, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Overload</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">Heroics instead of systems</text>
+            </g>
+          </g>
+
+          {/* Middle: System Flow */}
+          <g transform="translate(40, 200)">
+            <text x="0" y="0" fontSize="14" fill="#64748b">Our System</text>
+
+            {/* Flow bar */}
+            <path d="M0 60 H950" stroke="url(#g2)" strokeWidth="3.5" fill="none" opacity="0.7" />
+            {[0, 190, 380, 570, 760, 950].map((x, i) => (
+              <circle key={i} cx={x} cy={60} r="6" fill={i === 5 ? "#7c3aed" : "#06b6d4"} />
+            ))}
+
+            {/* Stages */}
+            {[
+              { x: 0,   t: "Discovery", s: "Understand goals and risks" },
+              { x: 190, t: "Design",    s: "Structure and roles" },
+              { x: 380, t: "Build",     s: "Views, fields, and automation" },
+              { x: 570, t: "Train",     s: "Role based guides" },
+              { x: 760, t: "Launch",    s: "Hypercare and adoption" },
+              { x: 950, t: "Improve",   s: "Reviews and scaling" },
+            ].map((n, i) => (
+              <g key={i} transform={`translate(${n.x - 70}, 16)`} filter="url(#soft2)">
+                <rect width="140" height="40" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+                <text x="70" y="26" textAnchor="middle" fontSize="13" fontWeight="700" fill="#0f172a">{n.t}</text>
+                <text x="70" y="64" textAnchor="middle" fontSize="11" fill="#475569">{n.s}</text>
+              </g>
+            ))}
+          </g>
+
+          {/* Bottom: After (Clarity) */}
+          <g transform="translate(40, 350)">
+            <text x="0" y="0" fontSize="14" fill="#64748b">After</text>
+            <g transform="translate(0, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Clarity</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">One source of truth</text>
+            </g>
+
+            <g transform="translate(280, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Accountability</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">Owners and simple checks</text>
+            </g>
+
+            <g transform="translate(560, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Adoption</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">Training and templates</text>
+            </g>
+
+            <g transform="translate(840, 16)" filter="url(#soft)">
+              <use href="#box" />
+              <text x="120" y="46" textAnchor="middle" fontWeight="700" fontSize="16" fill="#0f172a">Results</text>
+              <text x="120" y="72" textAnchor="middle" fontSize="12" fill="#475569">On time delivery and visibility</text>
+            </g>
+          </g>
         </svg>
       </div>
     </div>
@@ -274,17 +343,17 @@ function SystemDiagram() {
 /* -------------------- Page Sections -------------------- */
 function Hero() {
   return (
-    <Section id="hero" className="pt-28 pb-10">
+    <Section id="hero" className="pt-28 pb-8">
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <Pill>About Iteratum</Pill>
-          <h1 className="text-iteratum-hero mt-3">We Help Teams Work With Clarity and Confidence</h1>
+          <h1 className="text-iteratum-hero mt-3">Helping Teams Work With Clarity and Confidence</h1>
           <p className="mt-4 text-iteratum-subtitle max-w-xl">
-            Our mission is simple: give everyday teams the same clarity, tools, and execution that Fortune 500 companies rely on — without the complexity or ego.
+            Our mission is simple. Give everyday teams the same clarity, tools, and execution that large companies rely on, without the complexity or ego.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button href="https://cal.com/jonwoods">Book A Discovery Call</Button>
-            <Button variant="ghost" href="/#how-it-works">See The 10-Day Plan</Button>
+            <Button variant="ghost" href="/#how-it-works">See The 10 Day Plan</Button>
           </div>
         </div>
 
@@ -292,9 +361,9 @@ function Hero() {
           <div className="flex items-start justify-between mb-4">
             <div>
               <div className="text-sm font-semibold tracking-wide uppercase text-neutral-500">Certified</div>
-              <div className="text-xl font-bold mt-1">ClickUp & Zoho Experts</div>
+              <div className="text-xl font-bold mt-1">ClickUp and Zoho Experts</div>
               <div className="text-sm text-neutral-700 mt-1">
-                Clean structure, automation, and role-based training that teams actually use.
+                Clean structure, automation, and role based training that teams actually use.
               </div>
             </div>
             <ArrowRight className="hidden sm:block h-5 w-5 mt-2 flex-shrink-0" />
@@ -311,26 +380,17 @@ function Hero() {
 
 function Beliefs() {
   const items = [
-    {
-      t: "Clarity First",
-      d: "Everyone sees what matters, who owns it, and when it is due.",
-    },
-    {
-      t: "Lightweight Process",
-      d: "Structure should speed you up. We keep it simple and repeatable.",
-    },
-    {
-      t: "Adoption Over Theory",
-      d: "Real change happens when people can do the right thing without thinking twice.",
-    },
+    { t: "Clarity First", d: "Everyone sees what matters, who owns it, and when it is due." },
+    { t: "Lightweight Process", d: "Structure should speed you up. We keep it simple and repeatable." },
+    { t: "Adoption Over Theory", d: "Real change happens when people can do the right thing without thinking twice." },
   ];
   return (
-    <Section id="beliefs" className="py-14">
+    <Section id="beliefs" className="py-12">
       <div className="text-center max-w-3xl mx-auto">
         <Pill>What We Believe</Pill>
-        <h2 className="mt-3 text-iteratum-heading">Good Tools Matter. A Shared Way of Working Matters More.</h2>
+        <h2 className="mt-3 text-iteratum-heading">Good Tools Matter. A Shared Way Of Working Matters More.</h2>
         <p className="mt-2 text-iteratum-subtitle">
-          We combine clean structure, automation, and training so your team actually uses the system every day.
+          We combine clean structure, automation, and training so your team uses the system every day.
         </p>
       </div>
       <div className="mt-8 grid md:grid-cols-3 gap-6">
@@ -348,20 +408,22 @@ function Beliefs() {
 function AdoptionMatters() {
   const points = [
     "One source of truth for work, owners, and status.",
-    "Role-based views and simple checks keep work moving.",
-    "Training and templates make the system stick.",
+    "Role based views and simple checks keep work moving.",
+    "Training and templates make the habit stick.",
   ];
   return (
     <Section id="adoption" className="py-14 bg-iteratum-gradient-subtle">
       <div className="text-center max-w-3xl mx-auto">
         <Pill>Why Adoption Matters</Pill>
-        <h2 className="mt-3 text-iteratum-heading">It’s Not the Tool. It’s the Habit.</h2>
+        <h2 className="mt-3 text-iteratum-heading">It Is Not The Tool. It Is The Habit.</h2>
         <p className="mt-2 text-iteratum-subtitle">
           When your system becomes the habit, work moves on time and leadership has a clear view.
         </p>
       </div>
 
-      <SystemDiagram />
+      <div className="mt-8">
+        <HybridDiagram />
+      </div>
 
       <div className="mt-10 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {points.map((p, i) => (
@@ -379,30 +441,18 @@ function AdoptionMatters() {
 
 function HowWeHelp() {
   const items = [
-    {
-      t: "ClickUp Implementations",
-      d: "Clean structure, dashboards, and automation for visibility and momentum.",
-    },
-    {
-      t: "Zoho Implementations",
-      d: "Projects and Sprints configured to your workflow with reporting and governance.",
-    },
-    {
-      t: "Automation and QA",
-      d: "Guardrails and playbooks reduce errors and keep delivery on track.",
-    },
-    {
-      t: "Ongoing Improvement",
-      d: "Reviews, onboarding guides, and iterative changes as your team grows.",
-    },
+    { t: "ClickUp Implementations", d: "Clean structure, dashboards, and automation for visibility and momentum." },
+    { t: "Zoho Implementations", d: "Projects and Sprints configured to your workflow with reporting and governance." },
+    { t: "Automation and QA", d: "Guardrails and playbooks reduce errors and keep delivery on track." },
+    { t: "Ongoing Improvement", d: "Reviews, onboarding guides, and iterative changes as your team grows." },
   ];
   return (
     <Section id="help" className="py-14">
       <div className="text-center max-w-3xl mx-auto">
         <Pill>How We Help</Pill>
-        <h2 className="mt-3 text-iteratum-heading">ClickUp and Zoho, Implemented the Right Way</h2>
+        <h2 className="mt-3 text-iteratum-heading">ClickUp and Zoho. Implemented The Right Way.</h2>
         <p className="mt-2 text-iteratum-subtitle">
-          Architecture, automation, permissions, views, role-based training, and a guided launch. Your team goes live in about 10 business days.
+          Architecture, automation, permissions, views, role based training, and a guided launch. Your team goes live in about 10 business days.
         </p>
       </div>
 
@@ -427,21 +477,21 @@ function Founder() {
           <h2 className="mt-3 text-iteratum-heading">Why Iteratum Exists</h2>
           <div className="mt-4 space-y-4 text-iteratum-slate">
             <p>
-              Hi, I’m Jon. I’ve led delivery and operations for teams that needed more clarity and better execution.
-              The same pattern kept repeating: smart, motivated people working inside systems that made work harder than it needed to be.
+              Hi, I am Jon. I led delivery and operations for teams that needed more clarity and better execution.
+              The same pattern kept repeating. Smart people working inside systems that made the work harder than it needed to be.
             </p>
             <p>
-              I started Iteratum to give small and midsize teams the structure and momentum big companies enjoy — without the overhead.
-              We bring the parts that actually help: clear architecture, simple automation, and role-based training.
+              I started Iteratum to give small and midsize teams the structure and momentum big companies enjoy, without the overhead.
+              We bring the parts that help. Clear architecture, simple automation, and role based training.
             </p>
             <p>
-              The goal isn’t a fancy setup. The goal is a reliable habit that helps people do their best work.
-              If that sounds like what your team needs, I’d love to talk.
+              The goal is not a fancy setup. The goal is a reliable habit that helps people do their best work.
+              If that sounds like what your team needs, I would love to talk.
             </p>
           </div>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button href="https://cal.com/jonwoods">Book A Call</Button>
-            <Button variant="ghost" href="https://www.linkedin.com/in/jonthepm">Connect on LinkedIn</Button>
+            <Button variant="ghost" href="https://www.linkedin.com/in/jonthepm">Connect On LinkedIn</Button>
             <Button variant="ghost" href="mailto:jon@iteratum.com">jon@iteratum.com</Button>
           </div>
         </div>
@@ -463,15 +513,13 @@ function Founder() {
           </div>
 
           <div className="mt-6 rounded-xl border border-gray-200 bg-iteratum-gradient-subtle p-5">
-            <div className="text-sm font-semibold tracking-wide uppercase text-neutral-500">
-              Free Guide
-            </div>
+            <div className="text-sm font-semibold tracking-wide uppercase text-neutral-500">Free Guide</div>
             <div className="text-lg font-bold mt-1">Quick Setup Checklist</div>
             <div className="text-sm text-neutral-700 mt-1">
               Use the same guide we use to align teams fast.
             </div>
             <div className="mt-4">
-              <a href="/#contact" className="btn-iteratum-primary">Get the Checklist</a>
+              <a href="/#contact" className="btn-iteratum-primary">Get The Checklist</a>
             </div>
           </div>
         </Card>
@@ -487,9 +535,9 @@ function FinalCTA() {
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <Pill>Get Started</Pill>
-            <h3 className="mt-3 text-iteratum-heading">Give Your Team a System They Can Rely On</h3>
+            <h3 className="mt-3 text-iteratum-heading">Give Your Team A System They Can Rely On</h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-              <li className="flex items-start gap-2"><Users className="h-4 w-4 mt-0.5" /> Role-based training and guides</li>
+              <li className="flex items-start gap-2"><Users className="h-4 w-4 mt-0.5" /> Role based training and guides</li>
               <li className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5" /> Clear milestones and reporting</li>
               <li className="flex items-start gap-2"><Zap className="h-4 w-4 mt-0.5" /> Automation that saves time</li>
             </ul>
@@ -505,7 +553,7 @@ function FinalCTA() {
               <div className="text-xl font-bold mt-1">Quick Setup Checklist</div>
               <div className="text-sm text-neutral-700 mt-1">Use the same guide we use to align teams fast.</div>
               <div className="mt-4">
-                <a href="/#contact" className="btn-iteratum-primary">Get the Checklist</a>
+                <a href="/#contact" className="btn-iteratum-primary">Get The Checklist</a>
               </div>
             </Card>
           </div>
