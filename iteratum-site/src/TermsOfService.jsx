@@ -1,5 +1,6 @@
-// src/TermsOfService.jsx
 import React, { useEffect } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function TermsOfService() {
   useEffect(() => {
@@ -7,58 +8,68 @@ export default function TermsOfService() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-800 page-enter">
-      <section className="section-iteratum py-28">
-        <h1 className="text-iteratum-hero mb-6">Terms Of Service</h1>
-        <p className="text-iteratum-subtitle max-w-3xl mb-10">
-          These terms outline the rules and expectations for using Iteratum’s services and website.
-        </p>
+    <>
+      <Header />
+      <div className="bg-white min-h-screen page-enter">
+        {/* Page Hero */}
+        <section className="section-iteratum text-center py-24 border-b border-iteratum-gray-200 bg-iteratum-gradient-subtle">
+          <h1 className="text-iteratum-hero mb-3">Terms Of Service</h1>
+          <p className="text-iteratum-subtitle max-w-2xl mx-auto">
+            These terms outline expectations for using Iteratum and working with our services.
+          </p>
+        </section>
 
-        <div className="space-y-10 max-w-3xl leading-relaxed">
-          <section>
+        {/* Content */}
+        <section className="section-iteratum py-16 max-w-3xl mx-auto space-y-10 leading-relaxed">
+          <div>
             <h2 className="text-iteratum-heading mb-2">Use Of Services</h2>
             <p>
-              By engaging with Iteratum, you agree to use our services for lawful purposes and in accordance with agreed project scopes.
+              By using our website or services, you agree to engage in lawful use and honor project scopes as agreed upon
+              during delivery.
             </p>
-          </section>
+          </div>
 
-          <section>
-            <h2 className="text-iteratum-heading mb-2">Payments & Billing</h2>
+          <div>
+            <h2 className="text-iteratum-heading mb-2">Billing & Payments</h2>
             <p>
-              Payments, pricing, and billing schedules will be defined in your project agreement or proposal. Late payments may delay delivery.
+              Payments and billing schedules will be outlined in your proposal or agreement. Delayed payments may
+              pause work or delivery timelines.
             </p>
-          </section>
+          </div>
 
-          <section>
-            <h2 className="text-iteratum-heading mb-2">Project Responsibilities</h2>
+          <div>
+            <h2 className="text-iteratum-heading mb-2">Responsibilities</h2>
             <p>
-              We commit to delivering work to high standards, and clients commit to providing timely information, access, and feedback required to complete the work.
+              Iteratum will deliver services to a professional standard, and clients agree to provide timely access,
+              communication, and feedback needed to complete the work.
             </p>
-          </section>
+          </div>
 
-          <section>
+          <div>
             <h2 className="text-iteratum-heading mb-2">Liability</h2>
             <p>
-              Iteratum is not liable for indirect or consequential damages. Our total liability is capped at the amount paid for services rendered.
+              Iteratum is not liable for indirect or consequential damages. Liability is limited to the amount paid
+              for the services rendered.
             </p>
-          </section>
+          </div>
 
-          <section>
+          <div>
             <h2 className="text-iteratum-heading mb-2">Termination</h2>
             <p>
-              Either party may terminate an agreement with written notice. Completed work up to the termination point will be invoiced.
+              Either party may end a project with written notice. Work completed up to that point will be invoiced.
             </p>
-          </section>
+          </div>
 
-          <section>
+          <div>
             <h2 className="text-iteratum-heading mb-2">Contact</h2>
             <p>
-              For questions about these terms, contact{" "}
+              For questions regarding these terms, please contact{" "}
               <a className="underline" href="mailto:hello@iteratum.com">hello@iteratum.com</a>.
             </p>
-          </section>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+      </div>
+      <Footer />
+    </>
   );
 }
