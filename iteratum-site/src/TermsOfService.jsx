@@ -1,77 +1,154 @@
-import React, { useEffect } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+// src/TermsOfService.jsx
+import React from "react";
+import Layout from "./components/Layout";
 
 export default function TermsOfService() {
-  useEffect(() => {
-    document.title = "Terms Of Service | Iteratum";
-  }, []);
-
   return (
-    <>
-      <Header />
+    <Layout>
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <h1 className="text-4xl font-bold text-iteratum-dark mb-6">
+          Terms Of Service
+        </h1>
+        <p className="text-neutral-700 mb-8">
+          Last updated: October 27, 2025
+        </p>
 
-      <main className="bg-white min-h-screen page-enter pt-20">
-        {/* Page Hero (H1 Centered + LS1 subtitle) */}
-        <section className="section-iteratum text-center py-24 border-b border-iteratum-gray-200 bg-iteratum-gradient-subtle">
-          <h1 className="text-iteratum-hero mb-3">Terms Of Service</h1>
-          <p className="text-iteratum-subtitle max-w-2xl mx-auto">
-            Our policies that keep your data protected and your experience reliable.
-          </p>
-        </section>
-
-        {/* Content */}
-        <section className="section-iteratum py-16 max-w-3xl mx-auto space-y-10 leading-relaxed">
+        <div className="space-y-8 text-neutral-700 leading-relaxed">
           <div>
-            <h2 className="text-iteratum-heading mb-2">Use Of Services</h2>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              1. Agreement To Terms
+            </h2>
             <p>
-              By using our website or services, you agree to engage in lawful use and honor project scopes as agreed upon
-              during delivery.
+              By accessing or using the Iteratum website or services, you agree
+              to these Terms of Service and our Privacy Policy. If you do not
+              agree, please do not use our services.
             </p>
           </div>
 
           <div>
-            <h2 className="text-iteratum-heading mb-2">Billing & Payments</h2>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              2. Services
+            </h2>
             <p>
-              Payments and billing schedules will be outlined in your proposal or agreement. Delayed payments may
-              pause work or delivery timelines.
+              Iteratum provides consulting, implementation, and training
+              services for project management platforms such as ClickUp and
+              Zoho. The scope, timeline, and deliverables for each engagement
+              will be defined in a separate written agreement or proposal.
             </p>
           </div>
 
           <div>
-            <h2 className="text-iteratum-heading mb-2">Responsibilities</h2>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              3. User Responsibilities
+            </h2>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Provide accurate and up-to-date information.</li>
+              <li>
+                Ensure your team has proper access to the necessary tools or
+                platforms.
+              </li>
+              <li>
+                Avoid misuse of Iteratum’s website, materials, or content for
+                unlawful purposes.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              4. Payment And Billing
+            </h2>
             <p>
-              Iteratum will deliver services to a professional standard, and clients agree to provide timely access,
-              communication, and feedback needed to complete the work.
+              Payment terms, fees, and schedules are outlined in your project
+              agreement or invoice. Payments must be made according to the
+              agreed terms. Late payments may result in delayed services or
+              additional charges.
             </p>
           </div>
 
           <div>
-            <h2 className="text-iteratum-heading mb-2">Liability</h2>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              5. Confidentiality
+            </h2>
             <p>
-              Iteratum is not liable for indirect or consequential damages. Liability is limited to the amount paid
-              for the services rendered.
+              Both parties agree to maintain the confidentiality of proprietary
+              information shared during a project. Iteratum will not disclose
+              client data or internal materials without consent, except as
+              required by law.
             </p>
           </div>
 
           <div>
-            <h2 className="text-iteratum-heading mb-2">Termination</h2>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              6. Intellectual Property
+            </h2>
             <p>
-              Either party may end a project with written notice. Work completed up to that point will be invoiced.
+              All materials, templates, and systems developed by Iteratum remain
+              our intellectual property unless otherwise stated in writing.
+              Clients may use deliverables for internal business purposes only.
             </p>
           </div>
 
           <div>
-            <h2 className="text-iteratum-heading mb-2">Contact</h2>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              7. Limitation Of Liability
+            </h2>
             <p>
-              For questions regarding these terms, please contact{" "}
-              <a className="underline" href="mailto:hello@iteratum.com">hello@iteratum.com</a>.
+              Iteratum will not be liable for indirect, incidental, or
+              consequential damages arising from the use or inability to use our
+              services. Our total liability shall not exceed the amount paid for
+              the specific project engagement.
             </p>
           </div>
-        </section>
-      </main>
 
-      <Footer />
-    </>
+          <div>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              8. Termination
+            </h2>
+            <p>
+              Either party may terminate the engagement with written notice.
+              Fees for completed or in-progress work up to the date of
+              termination remain payable.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              9. Governing Law
+            </h2>
+            <p>
+              These Terms are governed by the laws of the State of North
+              Carolina. Any disputes will be resolved in courts located within
+              New Hanover County, NC.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-semibold text-iteratum-dark mb-2">
+              10. Contact Information
+            </h2>
+            <p>
+              For any questions about these Terms, contact us at{" "}
+              <a
+                href="mailto:hello@iteratum.com"
+                className="underline hover:no-underline text-iteratum-cyan"
+              >
+                hello@iteratum.com
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="mailto:hello@iteratum.com"
+            className="btn-iteratum-primary inline-flex items-center"
+          >
+            Contact Us
+          </a>
+        </div>
+      </section>
+    </Layout>
   );
 }
