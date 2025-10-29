@@ -19,9 +19,6 @@ export default function Header({ onOpenCal }) {
             alt="Iteratum"
             className="h-12 w-auto md:h-14 drop-shadow-md group-hover:scale-[1.05] transition-transform duration-200"
           />
-          <span className="font-semibold text-iteratum-dark text-lg md:text-xl">
-            Iteratum
-          </span>
         </a>
 
         {/* ---------- Desktop Navigation ---------- */}
