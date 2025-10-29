@@ -10,82 +10,60 @@ export default function Header({ onOpenCal }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur border-b border-neutral-200">
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between py-5 md:py-6">
-        {/* ---------- Brand ---------- */}
-        <a
-          href="/"
-          className="flex items-center gap-3 group transition-transform duration-200"
-        >
-          <img
-            src={ASSETS.iteratumLogo}
-            alt="Iteratum"
-            className="h-14 w-auto md:h-16 drop-shadow-md group-hover:scale-[1.05] transition-transform duration-200"
-          />
-        </a>
+ <header className="nav-iteratum fixed top-0 left-0 right-0 z-40 bg-white/70 backdrop-blur border-b border-neutral-200">
+      <Section className="py-5 md:py-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img
+              src={ASSETS.iteratumLogo}
+              alt="Iteratum"
+              className="h-14 w-auto md:h-16 drop-shadow-md hover:scale-[1.05] transition-transform duration-200"
+            />
+          </div>
 
-        {/* ---------- Desktop Navigation ---------- */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="/about"
-            className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="/resources"
-            className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors"
-          >
-            Resources
-          </a>
-          <button
-            onClick={onOpenCal}
-            className="btn-iteratum-primary text-sm font-semibold"
-          >
-            Book A Discovery Call
-          </button>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#how-it-works" className="nav-link">How It Works</a>
+            <a href="#products" className="nav-link">Products</a>
+            <a href="#results" className="nav-link">Results</a>
+            <a href="#pricing" className="nav-link">Pricing</a>
+            <a href="#faq" className="nav-link">FAQ</a>
+            <a href="/about" className="nav-link">About</a>
+            <a href="/resources" className="nav-link">Resources</a>
+          </nav>
 
-        {/* ---------- Mobile Toggle ---------- */}
-        <button
-          className="md:hidden p-2 rounded-lg border border-neutral-300 hover:bg-neutral-100 transition"
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* ---------- Mobile Menu ---------- */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-neutral-200 shadow-sm">
-          <nav className="flex flex-col gap-2 px-6 py-4">
-            <a
-              href="/about"
-              className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="/resources"
-              className="text-sm font-medium text-iteratum-charcoal hover:text-iteratum-cyan transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Resources
-            </a>
-            <button
-              onClick={() => {
-                setIsMenuOpen(false);
-                if (onOpenCal) onOpenCal();
-              }}
-              className="btn-iteratum-primary mt-3"
-            >
+          <div className="hidden md:block">
+            <button onClick={onOpenCal} className="btn-iteratum-primary">
               Book A Discovery Call
             </button>
-          </nav>
+          </div>
+
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsMenuOpen((v) => !v)}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-      )}
+
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-iteratum">
+            <nav className="flex flex-col space-y-3 pt-4">
+              <a href="#how-it-works" className="mobile-link">How It Works</a>
+              <a href="#products" className="mobile-link">Products</a>
+              <a href="#results" className="mobile-link">Results</a>
+              <a href="#pricing" className="mobile-link">Pricing</a>
+              <a href="#faq" className="mobile-link">FAQ</a>
+              <a href="/about" className="mobile-link">About</a>
+              <a href="/resources" className="mobile-link">Resources</a>
+              <button onClick={onOpenCal} className="btn-iteratum-primary mt-4 w-full">
+                Book A Discovery Call
+              </button>
+            </nav>
+          </div>
+        )}
+      </Section>
     </header>
   );
 }
