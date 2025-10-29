@@ -1,11 +1,10 @@
 // src/Resources.jsx
 import React from "react";
 import Layout from "./components/Layout";
-import { ArrowRight, Download, Lightbulb, FileText } from "lucide-react";
+import { ArrowRight, Download, Lightbulb, FileText, PenSquare, Sparkles } from "lucide-react";
 import insightsData from "./insights.json";
 
 export default function Resources() {
-  // Safely handle JSON import (avoid runtime errors if undefined or not array)
   const insights = Array.isArray(insightsData) ? insightsData : [];
   const featured = insights.slice(0, 3);
 
@@ -14,11 +13,12 @@ export default function Resources() {
       {/* ---------- Hero ---------- */}
       <section className="max-w-6xl mx-auto px-6 py-20 text-center">
         <h1 className="text-5xl font-bold text-iteratum-dark mb-4">
-          Resources & Learning Center
+          Resources and Learning Hub
         </h1>
         <p className="text-lg text-neutral-700 max-w-3xl mx-auto leading-relaxed mb-8">
-          Practical tools, guides, and insights to help teams implement ClickUp
-          and Zoho systems that actually work — fast.
+          Guides, frameworks, and insights from the Iteratum team to help you build ClickUp
+          and Zoho systems that drive real adoption. No fluff. Just practical, proven strategies
+          for faster launches and stronger execution.
         </p>
 
         <div className="flex justify-center gap-4 flex-wrap">
@@ -43,13 +43,27 @@ export default function Resources() {
         </div>
       </section>
 
+      {/* ---------- Why It Matters ---------- */}
+      <section className="py-16 bg-gradient-to-br from-neutral-50 to-iteratum-cyan/5 border-t border-b border-neutral-200">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <Sparkles className="w-10 h-10 mx-auto text-iteratum-cyan mb-4" />
+          <h2 className="text-3xl font-bold text-iteratum-dark mb-3">Why It Matters</h2>
+          <p className="text-lg text-iteratum-slate leading-relaxed max-w-3xl mx-auto">
+            Most “how-to” content is written by marketers, not builders.  
+            Iteratum’s resources come from real-world implementation work.  
+            Every guide, template, and article is field-tested with live teams using ClickUp and Zoho daily.  
+            You’ll learn what actually moves projects forward — and how to avoid the mistakes that stall adoption.
+          </p>
+        </div>
+      </section>
+
       {/* ---------- Featured Insights ---------- */}
-      <section className="bg-iteratum-gradient-subtle border-t border-gray-200 py-16">
+      <section className="bg-white border-t border-gray-200 py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-iteratum-heading">Latest Insights</h2>
             <p className="text-iteratum-subtitle mt-2">
-              Quick reads from our team on clarity, adoption, and automation.
+              Straight from our implementation floor — insights that help teams move faster and think smarter.
             </p>
           </div>
 
@@ -82,7 +96,7 @@ export default function Resources() {
             </div>
           ) : (
             <p className="text-center text-neutral-600">
-              No insights available at the moment. Please check back soon.
+              No insights available at the moment. Check back soon for fresh strategies and updates.
             </p>
           )}
 
@@ -100,9 +114,9 @@ export default function Resources() {
       {/* ---------- Guides & Templates ---------- */}
       <section id="guides" className="py-20 max-w-6xl mx-auto px-6">
         <div className="text-center mb-10">
-          <h2 className="text-iteratum-heading">Guides & Templates</h2>
+          <h2 className="text-iteratum-heading">Guides and Templates</h2>
           <p className="text-iteratum-subtitle mt-2">
-            Tools built from real client systems — ready to use or adapt.
+            Designed from real client systems — ready to use, adapt, and implement.
           </p>
         </div>
 
@@ -115,14 +129,14 @@ export default function Resources() {
               Quick Setup Checklist
             </h3>
             <p className="text-sm text-neutral-700 mb-4">
-              The same alignment checklist we use with clients to start projects
-              fast.
+              The exact checklist we use to align teams before kickoff. 
+              A simple 15-minute tool to reduce rework and confusion.
             </p>
             <a
-              href="https://cal.com/jonwoods"
+              href="mailto:hello@iteratum.com?subject=Request%20Quick%20Setup%20Checklist"
               className="btn-iteratum-primary inline-flex items-center gap-2"
             >
-              Download
+              Get Checklist
             </a>
           </div>
 
@@ -134,8 +148,8 @@ export default function Resources() {
               The Adoption Framework
             </h3>
             <p className="text-sm text-neutral-700 mb-4">
-              A step-by-step playbook for increasing system usage and team
-              accountability.
+              A step-by-step process to build accountability into every project.  
+              Learn how to launch systems that stick.
             </p>
             <a
               href="/resources/insights/adoption-playbook"
@@ -153,8 +167,8 @@ export default function Resources() {
               ClickUp Architecture Template
             </h3>
             <p className="text-sm text-neutral-700 mb-4">
-              A clean hierarchy and workflow design for scalable ClickUp
-              systems.
+              Our clean, scalable ClickUp workspace design — used by real clients to launch 
+              faster and grow without chaos.
             </p>
             <a
               href="mailto:hello@iteratum.com?subject=Request%20ClickUp%20Template"
@@ -166,6 +180,26 @@ export default function Resources() {
         </div>
       </section>
 
+      {/* ---------- Write With Us ---------- */}
+      <section className="py-24 bg-gradient-to-b from-neutral-50 to-white border-t border-neutral-200 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <PenSquare className="w-10 h-10 mx-auto text-iteratum-cyan mb-4" />
+          <h2 className="text-3xl font-bold text-iteratum-dark mb-3">Write for Iteratum</h2>
+          <p className="text-lg text-iteratum-slate leading-relaxed mb-8">
+            Have insight into ClickUp, Zoho, or modern project management?  
+            We welcome guest contributors who share our belief in practical, 
+            real-world knowledge over theory.  
+            Pitch your article idea and join a growing network of system builders.
+          </p>
+          <a
+            href="mailto:hello@iteratum.com?subject=Contributor%20Inquiry"
+            className="btn-iteratum-primary inline-flex items-center gap-2"
+          >
+            Pitch an Article
+          </a>
+        </div>
+      </section>
+
       {/* ---------- CTA ---------- */}
       <section className="bg-white border-t border-gray-200 py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -173,8 +207,8 @@ export default function Resources() {
             Build Systems That Teams Actually Use
           </h2>
           <p className="text-neutral-700 mb-6 max-w-2xl mx-auto">
-            Whether you’re implementing ClickUp or Zoho, our framework helps
-            teams reach full adoption in about 10 days.
+            Whether you’re implementing ClickUp or Zoho, our frameworks turn
+            complexity into clarity. Launch in 10 days, adopt for life.
           </p>
           <a
             href="https://cal.com/jonwoods"
