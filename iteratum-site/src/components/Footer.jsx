@@ -19,7 +19,6 @@ export default function Footer() {
               alt="Iteratum Logo"
               className="h-12 w-12 md:h-14 md:w-14 rounded-lg shadow-lg hover:scale-[1.03] transition-transform duration-200"
             />
-            <span className="text-lg font-semibold text-white">Iteratum</span>
           </div>
 
           <p className="text-sm text-gray-400 mb-6 max-w-md leading-relaxed">
